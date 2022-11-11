@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Ambient Information</h2>
+<mat-dialog-content class="mat-typography">
+    <div *ngFor="let ambient of viewValues">
+        <div>
+            <h3>Name - {{ambient.name}}</h3>
+            <h3 class="display">Availabilities: <h4 class="text" *ngFor="let avail of ambient.availabilities">-{{avail}}-</h4></h3>
+        </div>
+        <div>
+            <h3 class="display">Characteristics: <h4 class="text" *ngFor="let char of ambient.characteristics">-{{char}}-</h4></h3>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

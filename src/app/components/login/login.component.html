@@ -1,0 +1,22 @@
+<header class="header-container">
+    <div class="header-text">
+        Login
+    </div>
+</header>
+
+<body>
+    <form [formGroup]="formUserLogin">
+        <div class="display">
+            <mat-form-field class="form" appearance="fill">
+                <mat-label>User Name</mat-label>
+                <input matInput [(ngModel)]="userN" formControlName="username">
+            </mat-form-field>
+            <mat-form-field class="form" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" [(ngModel)]="pass" formControlName="password">
+            </mat-form-field>
+            <button class="btn-log" mat-raised-button (click)="goLog()">Enter</button>
+            <button class="btn-cancel" mat-raised-button (click)="goBack()">Cancel</button>
+        </div>
+    </form>
+</body>

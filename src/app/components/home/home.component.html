@@ -1,0 +1,51 @@
+<header class="header-container">
+  <div class="header-text">
+    SULA
+    <mat-icon class="login" aria-hidden="false" aria-label="Login icon" (click)="goLogin()">login</mat-icon>
+  </div>
+</header>
+
+<body>
+  <div class="display">
+    <form class="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione o Curso</mat-label>
+        <mat-select [(ngModel)]="selectedCurso" name="curso">
+          <mat-option *ngFor="let curso of cursos" [value]="curso.value">
+            {{curso.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <form class="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione o Semestre</mat-label>
+        <mat-select [(ngModel)]="selectedSemestre" name="semestre">
+          <mat-option *ngFor="let semestre of semestres" [value]="semestre.value">
+            {{semestre.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <form class="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione o Período</mat-label>
+        <mat-select [(ngModel)]="selectedPeriodo" name="periodo">
+          <mat-option *ngFor="let periodo of periodos" [value]="periodo.value">
+            {{periodo.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <div class="radio-button">
+      <mat-radio-group [(ngModel)]="tipoData">
+        <mat-radio-button *ngFor="let date of dates" [value]="date">{{date}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div><!--
+  <div class="display">
+    <div class="calendar-box">
+      <p >{{dia}}</p>
+    </div>    
+  </div>  -->
+</body>

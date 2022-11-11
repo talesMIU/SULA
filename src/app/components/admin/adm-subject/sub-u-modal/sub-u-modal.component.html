@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Update Subject</h2>
+<mat-dialog-content class="mat-typography">
+    <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Current Name</mat-label>
+          <input matInput type="text" disabled="disable">{{oldName.name}}
+        </mat-form-field>
+      </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>New Name (Optional)</mat-label>
+        <input matInput type="text" [(ngModel)]="subName">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>New Semester (Optional)</mat-label>
+        <mat-select [(ngModel)]="subSem">
+          <mat-option  *ngFor="let semester of subSemester" [value]="semester.value">
+            {{semester.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>New Status (Optional)</mat-label>
+        <mat-select [(ngModel)]="subStat">
+          <mat-option  *ngFor="let stat of subStatus" [value]="stat.value">
+            {{stat.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateSub()">Confirm</button>
+</mat-dialog-actions>

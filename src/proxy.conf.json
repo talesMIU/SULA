@@ -1,0 +1,6 @@
+{
+    "/user/login": {
+    "target": "https://api-sula.herokuapp.com",
+    "secure": false
+    }
+}

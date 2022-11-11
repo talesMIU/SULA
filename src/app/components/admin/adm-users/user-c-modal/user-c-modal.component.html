@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>New User</h2>
+<mat-dialog-content class="mat-typography">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [(ngModel)]="userName">
+      </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" [(ngModel)]="userEmail">
+        </mat-form-field>
+      </div>
+    <div>
+        <div>
+            <mat-form-field appearance="fill">
+              <mat-label>User Name</mat-label>
+              <input matInput type="text" [(ngModel)]="userUsName">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Temporary Password</mat-label>
+              <input matInput type="text" [(ngModel)]="userPassword">
+            </mat-form-field>
+          </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <mat-select [(ngModel)]="userRole">
+          <mat-option  *ngFor="let role of userRoles" [value]="role.value">
+            {{role.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button cdkFocusInitial (click)="newUser()">Save</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="newUser()">Confirm</button>
+</mat-dialog-actions>

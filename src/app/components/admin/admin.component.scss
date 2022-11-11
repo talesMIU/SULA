@@ -1,0 +1,89 @@
+html {
+    height: 100%;
+}
+
+.header-container{
+    background-color: rgb(0, 0, 0);   
+}
+
+.header-text{
+    padding-top: 2vh;
+    padding-left: 8vh;
+    padding-bottom: 2vh;
+    font: 25px verdana;
+    color: white;
+    font-weight: 550;
+}
+
+.body{
+    display: flex;
+    height: 100%;
+}
+
+.side-nav{ 
+    width: 15vh;
+    min-height: 100%;
+    background-color: black;
+    border: 15px solid rgb(0, 0, 0);
+}
+
+.list{
+    -ms-flex-align: start;
+}
+
+.sideButton{
+    padding: 1vh;
+    font: 15px verdana;
+    color: white;
+}
+
+.sideButton:hover{
+    color: rgb(240, 93, 93);
+}
+
+.rigth-body{
+    flex-wrap: wrap;
+    background-color: red($color: #d43333) !important;
+    margin-top: 2vh;
+    width: 500vh !important;
+    margin-left: 5vh;
+}
+
+.row{
+    flex-direction: row;
+}
+
+.search{
+    width: 30vh;
+    margin-right: 5vh;
+}
+
+.btn-create{
+    -ms-flex-align: start;
+    margin-right: 2vh;
+    margin-top: 10px;
+    background-color: rgb(23, 98, 238) !important;
+    color: white;
+    width: 15vh !important;
+}
+.btn-update{
+    -ms-flex-align: start;
+    margin-right: 2vh;
+    margin-top: 10px;
+    background-color: rgb(59, 59, 59) !important;
+    color: white;
+    width: 15vh !important;
+}
+.btn-delete{
+    -ms-flex-align: start;
+    margin-right: 2vh;
+    margin-top: 10px;
+    background-color: rgb(192, 63, 63) !important;
+    color: white;
+    width: 15vh !important;
+}
+
+table {
+    width: 99%;
+    height: 100%;
+  }
