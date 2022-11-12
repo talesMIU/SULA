@@ -11,5 +11,5 @@ export class MainUModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  updateMaintenance(){}
 }

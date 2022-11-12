@@ -1,1 +1,29 @@
-<h2>Maintenance</h2>
+<h2 mat-dialog-title>New Maintenancet</h2>
+<mat-dialog-content class="mat-typography">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Ambient</mat-label>
+        <mat-select [(ngModel)]="selectedAmbient">
+          <mat-option  *ngFor="let ambient of ambientArray" [value]="ambient">
+            {{ambient.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="newMaintenance()">Confirm</button>
+</mat-dialog-actions>

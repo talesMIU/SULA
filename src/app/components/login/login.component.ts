@@ -59,13 +59,15 @@ export class LoginComponent implements OnInit {
         this.sessionLog.token = JSON.stringify(Object.values(data)[0]);
         this.loginStorageService.saveUserLogin(data);
         this.userService.userAll().subscribe((user: any) => {
+          console.log(user);
           for (let us of user) {
             if (us.username === this.userN) {
               for(let role of us.roles){
                 if(role.name==='ROLE_ADMIN'){
                   this.router.navigate(['admin']);
-                }else{
+                }else if(role.name==='ROLE_USER'){
                   this.router.navigate(['control']);
+                  sessionStorage.setItem('username',us.name)
                 }
               }
             }

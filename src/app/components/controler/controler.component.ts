@@ -31,6 +31,7 @@ export class ControlerComponent implements OnInit {
   selectedCurso: any;
   sem = 'Semanal';
   men = 'Mensal';
+  userName!: any;
 
   cursos: Curso[] = [
     {value:'ads', viewValue:'Análise e Desenvolvimento de Sistemas'},
@@ -73,7 +74,9 @@ export class ControlerComponent implements OnInit {
   constructor(private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.userName = sessionStorage.getItem('username')
     this.tipoData = 'Semanal';
+    console.log(this.userName);
   }
 
   goLogin(){
