@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
             if (us.username === this.userN) {
               for(let role of us.roles){
                 if(role.name==='ROLE_ADMIN'){
-                  console.log('if funfa')
                   this.router.navigate(['admin']);
                 }else{
                   this.router.navigate(['control']);

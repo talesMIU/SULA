@@ -68,11 +68,22 @@ html {
 }
 .btn-update{
     -ms-flex-align: start;
+    
     margin-right: 2vh;
     margin-top: 10px;
     background-color: rgb(59, 59, 59) !important;
     color: white;
     width: 15vh !important;
+}
+
+.btn-main{
+    -ms-flex-align: start;
+    
+    margin-right: 2vh;
+    margin-top: 10px;
+    background-color: rgb(59, 59, 59) !important;
+    color: white;
+    width:fit-content;
 }
 .btn-delete{
     -ms-flex-align: start;

@@ -4,7 +4,7 @@
             <mat-label>Search</mat-label>
             <input matInput placeholder="" value="">
         </mat-form-field>
-        <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-create" color="primary" (click)="createMain()">Create</button>
+        <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-create" color="accet" (click)="createMain()">Create</button>
         <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-update" color="accent" (click)="updateMain()">Update</button>
         <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-delete" color="warn" (click)="doneMain()">Finished</button>
     </form>

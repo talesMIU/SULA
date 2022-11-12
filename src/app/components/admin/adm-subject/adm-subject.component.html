@@ -5,9 +5,9 @@
             <input matInput placeholder="" value="">
         </mat-form-field>
         <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-create" color="primary" (click)="createSub()">Create</button>
-        <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-create" color="primary" (click)="addCourse()">Add to Course</button>
         <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-update" color="accent" (click)="updateSub()">Update</button>
         <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-delete" color="warn" (click)="deleteSub()">Deactivate</button>
+        <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-create" color="primary" (click)="addCourse()">Add to Course</button>
     </form>
 </div>
 <div class="table-tile">

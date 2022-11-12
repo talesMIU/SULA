@@ -7,7 +7,7 @@
             </mat-form-field>
             <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-create" color="primary" (click)="createAmb()">Create</button>
             <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-create" color="primary" (click)="viewAmb()">View Info</button>
-            <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-update" color="accent" (click)="update()">Update</button>
+            <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-update" color="accent" (click)="update()">Update</button>        
             <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-delete" color="warn" (click)="deActivateAmb()">Deactivate</button>
         </form>
     </div>
