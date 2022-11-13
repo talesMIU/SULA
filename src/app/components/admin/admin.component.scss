@@ -58,7 +58,7 @@ html {
     margin-right: 5vh;
 }
 
-.btn-create{
+.btn-primario{
     -ms-flex-align: start;
     margin-right: 2vh;
     margin-top: 10px;
@@ -66,26 +66,25 @@ html {
     color: white;
     width: 15vh !important;
 }
-.btn-update{
-    -ms-flex-align: start;
-    
+.btn-secundario{
+    -ms-flex-align: start;    
     margin-right: 2vh;
     margin-top: 10px;
     background-color: rgb(59, 59, 59) !important;
     color: white;
-    width: 15vh !important;
+    width: fit-content;
+    align-content: center;
 }
 
 .btn-main{
-    -ms-flex-align: start;
-    
+    -ms-flex-align: start;    
     margin-right: 2vh;
     margin-top: 10px;
     background-color: rgb(59, 59, 59) !important;
     color: white;
     width:fit-content;
 }
-.btn-delete{
+.btn-terciario{
     -ms-flex-align: start;
     margin-right: 2vh;
     margin-top: 10px;
@@ -96,5 +95,5 @@ html {
 
 table {
     width: 99%;
-    height: 100%;
+    height: 15vh;
   }

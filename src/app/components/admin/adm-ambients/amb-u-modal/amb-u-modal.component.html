@@ -1,5 +1,11 @@
-<h2 mat-dialog-title>Ambient</h2>
+<h2 mat-dialog-title>Update Ambient</h2>
 <mat-dialog-content class="mat-typography">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Current Name</mat-label>
+      <input matInput type="text" disabled="disable">{{oldName.name}}
+    </mat-form-field>
+  </div>
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
@@ -33,6 +39,16 @@
   <div>
       <mat-label>Availabilities</mat-label></div><div>
       <mat-checkbox class="checkBox" *ngFor="let available of ambAval" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>New Status (Optional)</mat-label>
+      <mat-select [(ngModel)]="ambStat">
+        <mat-option  *ngFor="let stat of ambientStatus" [value]="stat.value">
+          {{stat.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

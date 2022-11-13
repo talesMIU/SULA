@@ -1,5 +1,6 @@
 .header-container{
     background-color: rgb(0, 0, 0);
+    width: 235vh;
 }
 .header-text{
     padding-top: 1%;
@@ -8,6 +9,9 @@
     font: 25px verdana;
     color: white;
     font-weight: 550;
+}
+body{
+width: 235vh;
 }
 .login{
     float: right;

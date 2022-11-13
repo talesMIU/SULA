@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AmbCModalComponent } from './amb-c-modal/amb-c-modal.component';
@@ -6,6 +6,7 @@ import { AmbientService } from 'src/app/services/ambient.service';
 import { Ambient } from 'src/app/models/model';
 import { AmbVModalComponent } from './amb-v-modal/amb-v-modal.component';
 import { AmbUModalComponent } from './amb-u-modal/amb-u-modal.component';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-adm-ambients',
@@ -19,9 +20,11 @@ export class AdmAmbientsComponent implements OnInit {
   dataSource: any;
   searchAmbients: any;
   checkBoxArray = new Array();
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private router: Router, public dialog: MatDialog, private ambient:AmbientService) { }
-
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
   ngOnInit(): void {
     this.loadData();
   }
@@ -55,7 +58,11 @@ export class AdmAmbientsComponent implements OnInit {
     }
   }  
   update(){
-    this.dialog.open(AmbUModalComponent);
+    this.dialog.open(AmbUModalComponent, {
+      data: {
+        id: this.checkBoxArray[0],
+      }
+    });
   }
   deActivateAmb(){
     

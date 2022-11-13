@@ -5,10 +5,10 @@
                 <mat-label>Search</mat-label>
                 <input matInput placeholder="" value="">
             </mat-form-field>
-            <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-create" color="primary" (click)="createAmb()">Create</button>
-            <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-create" color="primary" (click)="viewAmb()">View Info</button>
-            <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-update" color="accent" (click)="update()">Update</button>        
-            <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-delete" color="warn" (click)="deActivateAmb()">Deactivate</button>
+            <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createAmb()">Create</button>
+            <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"  (click)="update()">Update</button>    
+            <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-secundario"  (click)="viewAmb()">View Info</button>
+            <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario"  (click)="deActivateAmb()">Deactivate</button>
         </form>
     </div>
     <div class="table-tile">

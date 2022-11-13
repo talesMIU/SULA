@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateAgendamentoComponent } from './update-agendamento/update-agendamento.component';
 import { NewAgeModComponent } from './new-age-mod/new-age-mod.component';
+import { LoginStorageService } from '../../services/storage/login-storage-service'
 
 interface Curso {
   value: string;
@@ -71,12 +72,15 @@ export class ControlerComponent implements OnInit {
 
 
   dates: string[] = ['Semanal', 'Mensal'];
-  constructor(private router: Router, public dialog: MatDialog) { }
+  constructor(private router: Router, public dialog: MatDialog, private login: LoginStorageService) { }
 
   ngOnInit(): void {
+    let log = this.login.getUserRole();
+    if(log !== 'ROLE_USER'){
+      this.router.navigate(['']);
+    }
     this.userName = sessionStorage.getItem('username')
     this.tipoData = 'Semanal';
-    console.log(this.userName);
   }
 
   goLogin(){

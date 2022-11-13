@@ -12,27 +12,30 @@ export class LoginStorageService{
 
     constructor(){}
 
-    public saveUserLogin(user: UserToken): void{
+    public saveUserLogin(user: UserToken, role: string): void{
         let token = Object.values(user)[0];
+        let refreshT = Object.values(user)[1];
+        let rol = role;
+        console.log(user);
         sessionStorage.setItem(LoginStorageKeys.token, token)
-      //  sessionStorage.setItem(LoginStorageKeys.refreshToken, JSON.stringify(Object.values(user)[1]));
-      //  sessionStorage.setItem(LoginStorageKeys.role, JSON.stringify(Object.values(user)[2]));
+        sessionStorage.setItem(LoginStorageKeys.refreshToken, refreshT);
+        sessionStorage.setItem(LoginStorageKeys.role, rol);
         this.loggedUserSubject.next(user);
     }
     public clearUser():void{
         sessionStorage.removeItem(LoginStorageKeys.token);
-    //    sessionStorage.removeItem(LoginStorageKeys.refreshToken);
-    //    sessionStorage.removeItem(LoginStorageKeys.role);
+        sessionStorage.removeItem(LoginStorageKeys.refreshToken);
+        sessionStorage.removeItem(LoginStorageKeys.role);
         this.loggedUserSubject.next();
     }
     //gets como void alterar para string
     public getUserToken(): string|null{
         return sessionStorage.getItem(LoginStorageKeys.token);
     }
-    //public getUserRefreshToken(): string|null{
-    //    return sessionStorage.getItem(LoginStorageKeys.refreshToken);
-   // }
-    //public getUserRole(): string|null{
-    //    return sessionStorage.getItem(LoginStorageKeys.role);
-   // }
+    public getUserRefreshToken(): string|null{
+        return sessionStorage.getItem(LoginStorageKeys.refreshToken);
+    }
+    public getUserRole(): string|null{
+        return sessionStorage.getItem(LoginStorageKeys.role);
+    }
 }

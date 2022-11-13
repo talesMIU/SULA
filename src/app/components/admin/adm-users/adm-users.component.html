@@ -4,9 +4,9 @@
             <mat-label>Search</mat-label>
             <input matInput placeholder="" value="">
         </mat-form-field>
-        <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-create" color="primary" (click)="createUser()">Create</button>
-        <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-update" color="accent" (click)="updateUser()">Update</button>
-        <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-delete" color="warn" (click)="deactivateUser()">Deactivate</button>
+        <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createUser()">Create</button>
+        <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"(click)="updateUser()">Update</button>
+        <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario" (click)="deactivateUser()">Deactivate</button>
     </form>
 </div>
 <div class="table-tile">

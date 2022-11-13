@@ -1,5 +1,11 @@
 <h2 mat-dialog-title>Update User</h2>
 <mat-dialog-content class="mat-typography">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Current Name</mat-label>
+      <input matInput type="text" disabled="disable">{{oldName.name}}
+    </mat-form-field>
+  </div>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>

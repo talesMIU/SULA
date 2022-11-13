@@ -47,6 +47,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -102,6 +103,7 @@ import { DatePipe } from '@angular/common';
     MatInputModule,
     MatListModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatRadioModule,    
     MatSelectModule,  
     MatSidenavModule,
