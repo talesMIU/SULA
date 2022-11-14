@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class UpdateAgendamentoComponent implements OnInit {
 
   update: any;
-  ups: string[] = ['Atualização', 'Cancelamento'];
-  atu = 'Atualização';
-  can = 'Cancelamento';
+  ups: string[] = ['Update', 'Cancel Schedule'];
+  atu = 'Update';
+  can = 'Cancel Schedule';
+  tipoAgendamento: any;
+  ages: string[] = ['Once', 'Recurrent'];
   constructor() { }
 
   ngOnInit(): void {

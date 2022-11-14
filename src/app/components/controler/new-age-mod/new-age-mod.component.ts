@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NewAgeModComponent implements OnInit {
 
   tipoAgendamento: any;
-  ages: string[] = ['Único', 'Recorrente'];
+  ages: string[] = ['Once', 'Recurrent'];
 
   constructor() { }
 

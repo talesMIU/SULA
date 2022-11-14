@@ -67,3 +67,19 @@ width: 235vh;
     padding-bottom: 3px;
     margin-bottom: 5px;
 }
+.btn-primario{
+    -ms-flex-align: start;
+    margin-right: 2vh;
+    margin-top: 10px;
+    background-color: rgb(23, 98, 238) !important;
+    color: white;
+    width: fit-content !important;
+}
+.btn-terciario{
+    -ms-flex-align: start;
+    margin-right: 2vh;
+    margin-top: 10px;
+    background-color: rgb(192, 63, 63) !important;
+    color: white;
+    width: 15vh !important;
+}

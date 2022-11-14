@@ -30,8 +30,8 @@ export class ControlerComponent implements OnInit {
 
   tipoData:any;
   selectedCurso: any;
-  sem = 'Semanal';
-  men = 'Mensal';
+  sem = 'Week';
+  men = 'Month';
   userName!: any;
 
   cursos: Curso[] = [
@@ -71,7 +71,7 @@ export class ControlerComponent implements OnInit {
   ]
 
 
-  dates: string[] = ['Semanal', 'Mensal'];
+  dates: string[] = ['Week', 'Month'];
   constructor(private router: Router, public dialog: MatDialog, private login: LoginStorageService) { }
 
   ngOnInit(): void {
@@ -80,7 +80,7 @@ export class ControlerComponent implements OnInit {
       this.router.navigate(['']);
     }
     this.userName = sessionStorage.getItem('username')
-    this.tipoData = 'Semanal';
+    this.tipoData = 'Week';
   }
 
   goLogin(){
