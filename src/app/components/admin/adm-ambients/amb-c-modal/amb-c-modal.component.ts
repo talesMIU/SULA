@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AmbientService } from 'src/app/services/ambient.service';
 import { ComboBox } from 'src/app/shared/comboBox';
-
+import { ShareFailedComponent } from 'src/app/shared/share-failed/share-failed.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-amb-c-modal',
   templateUrl: './amb-c-modal.component.html',
@@ -32,7 +33,7 @@ export class AmbCModalComponent implements OnInit {
   ambientReference!:string;
   ambientNumber!: number;
 
-  constructor(private ambient: AmbientService ) { }
+  constructor(private ambient: AmbientService, public dialog: MatDialog ) { }
 
   ngOnInit(): void { 
 
@@ -75,10 +76,10 @@ export class AmbCModalComponent implements OnInit {
     }
     console.log(this.aAval);
   }
-  newAmb(){
-    let objString = JSON.stringify({availabilities:this.aAval , characteristics: this.aChar , name: this.ambientName , type: this.aType , reference:this.ambientReference , number:this.ambientNumber});
-    let objJson = JSON.parse(objString)
-    console.log(objJson);
-    this.ambient.ambientCreate(objJson).subscribe((data)=>{console.log(data)});
+  newAmb(){    
+      let objString = JSON.stringify({availabilities:this.aAval , characteristics: this.aChar , name: this.ambientName , type: this.aType , reference:this.ambientReference , number:this.ambientNumber});
+      let objJson = JSON.parse(objString);
+      this.ambient.ambientCreate(objJson).subscribe((data)=>{console.log(data)},
+      (err)=>{console.log(err);this.dialog.open(ShareFailedComponent);});
   }
 }

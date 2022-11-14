@@ -55,6 +55,8 @@ import { MatTableModule} from '@angular/material/table';
 import { UpdateAgendamentoComponent } from './components/controler/update-agendamento/update-agendamento.component';
 import { NewAgeModComponent } from './components/controler/new-age-mod/new-age-mod.component';
 import { DatePipe } from '@angular/common';
+import { ShareSuccessComponent } from './shared/share-success/share-success.component';
+import { ShareFailedComponent } from './shared/share-failed/share-failed.component';
 
 
 
@@ -83,7 +85,9 @@ import { DatePipe } from '@angular/common';
     CouAModalComponent,
     AdmMaintenanceComponent,
     MainCModalComponent,
-    MainUModalComponent
+    MainUModalComponent,
+    ShareSuccessComponent,
+    ShareFailedComponent
   ],
   imports: [
     AppRoutingModule,    
