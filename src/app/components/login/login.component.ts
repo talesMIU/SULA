@@ -53,22 +53,21 @@ export class LoginComponent implements OnInit {
     formData.append('username', this.formUserLogin.get('username')?.value);
     formData.append('password', this.formUserLogin.get('password')?.value);
     this.userService.getLogin(formData).subscribe((data: any) => {
-      console.log(data);
       if (data) {
         this.sessionLog.token = JSON.stringify(Object.values(data)[0]);
         this.loginStorageService.saveUserLogin(data,'');
         this.userService.userAll().subscribe((user: any) => {
-          console.log(user);
           for (let us of user) {
             if (us.username === this.userN) {
               for(let role of us.roles){
                 if(role.name==='ROLE_ADMIN'){
                   this.loginStorageService.saveUserLogin(data,role.name);
                   this.router.navigate(['admin']);
+                  sessionStorage.setItem('adminPage', "Ambients");
                 }else if(role.name==='ROLE_USER'){
                   this.router.navigate(['control']);
                   this.loginStorageService.saveUserLogin(data,role.name);
-                  sessionStorage.setItem('username',us.name)
+                  sessionStorage.setItem('username',us.name);
                 }
               }
             }

@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
   constructor(  private router: Router, public scheduleService: ScheduleService) {};
 
   ngOnInit(): void {
-    this.scheduleService.scheduleAll().subscribe((data:any)=>(
+    this.scheduleService.scheduleAll().then((data:any)=>(
       console.log(data)
     ));
     this.dia = 'tales';

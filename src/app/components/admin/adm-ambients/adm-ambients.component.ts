@@ -20,17 +20,19 @@ export class AdmAmbientsComponent implements OnInit {
   dataSource: any;
   searchAmbients: any;
   checkBoxArray = new Array();
+  loading!:boolean;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private router: Router, public dialog: MatDialog, private ambient:AmbientService) { }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit(): void {
+    this.loading=false;
     this.loadData();
   }
 
   loadData(){
-    this.ambient.ambientAll().subscribe((data)=>{
+    this.ambient.ambientAll().then((data)=>{
       this.dataSource = data;
     })
   }
@@ -65,8 +67,8 @@ export class AdmAmbientsComponent implements OnInit {
     });
   }
   deActivateAmb(){
-    
-    this.ambient.ambientAll().subscribe((data)=>{
+    this.loading=true;
+    this.ambient.ambientAll().then((data)=>{
       for (let ob of data) {
         let y = 0;
         for (y = 0; y < this.checkBoxArray.length; y++) {
@@ -74,8 +76,7 @@ export class AdmAmbientsComponent implements OnInit {
             ob.isActive = false;
             let stringOb = JSON.stringify(ob);
             let jsonOb = JSON.parse(stringOb);
-            console.log(jsonOb);
-            this.ambient.ambientUpdate(this.checkBoxArray[y], jsonOb).subscribe((data) => { console.log('desativado') });
+            this.ambient.ambientUpdate(this.checkBoxArray[y], jsonOb).then((data) => { console.log('desativado') }).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
           }
         }
 

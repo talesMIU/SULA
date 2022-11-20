@@ -12,20 +12,20 @@ import { HttpResponse } from '@angular/common/http';
 export class SubjectService{
     constructor(private http:HttpClient) { }
 
-    public subjectCreate (subject: JSON): Observable<SubjectName[]>{
+    public subjectCreate (subject: JSON): Promise<SubjectName[]>{
         const url = `${environment.SULA_API}${environment.subjServ}/create`;
-        return this.http.post<SubjectName[]>(url, subject);
+        return this.http.post<SubjectName[]>(url, subject).toPromise();
     }
-    public subjectUpdate (id:string,subject: SubjectName): Observable<SubjectName[]> {
+    public subjectUpdate (id:string,subject: SubjectName): Promise<SubjectName[]> {
         const url = `${environment.SULA_API}${environment.subjServ}/update/${id}`;
-        return this.http.put<SubjectName[]>(url, subject);
+        return this.http.put<SubjectName[]>(url, subject).toPromise();
     }
-    public subjectById (id:string): Observable<SubjectName[]> {
+    public subjectById (id:string): Promise<SubjectName[]> {
         const url = `${environment.SULA_API}${environment.subjServ}/details/${id}`;
-        return this.http.get<SubjectName[]>(url);
+        return this.http.get<SubjectName[]>(url).toPromise();
     }
-    public subjectAll (): Observable<SubjectName[]> {
+    public subjectAll (): Promise<SubjectName[]> {
         const url = `${environment.SULA_API}${environment.subjServ}/all`;
-        return this.http.get<SubjectName[]>(url);
+        return this.http.get<SubjectName[]>(url).toPromise();
     }
 }

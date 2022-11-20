@@ -35,20 +35,18 @@ export class SubUModalComponent implements OnInit {
 
   ngOnInit() {    
     this.subId = Object.values(this.data)[0];
-    this.subject.subjectById(this.subId).subscribe((old:any)=>{this.oldName = old});
+    this.subject.subjectById(this.subId).then((old:any)=>{this.oldName = old});
   }
   updateSub() {
-      this.subject.subjectById(this.subId).subscribe((values: any) => {
+      this.subject.subjectById(this.subId).then((values: any) => {
        if(this.subName){
         values.name=this.subName;
-       }
-       if(this.subSem){
+       }else if(this.subSem){
         values.semester=this.subSem;
-       }
-       if(this.subStat){
+       }else if(this.subStat){
         values.isActive=this.subStat;
        }
-       this.subject.subjectUpdate(this.subId, values).subscribe((data:any)=>{console.log(data)});
+       this.subject.subjectUpdate(this.subId, values).then((data:any)=>{console.log(data)});
     }
 
     );

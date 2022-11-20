@@ -16,11 +16,11 @@ export class AdmMaintenanceComponent implements OnInit {
   displayedColumns: string[] = ['id', 'ambientName', 'isDone','createdOn', 'endDate', 'updatedOn', ];
   dataSource: any;
   checkBoxArray = new Array();
+  loading!:boolean;
   constructor(private dialog: MatDialog, private maintenance: AmbientMaintenanceService){ }
 
   ngOnInit(): void {
     this.loadData();
-    console.log()
   }
 createMain(){
   this.dialog.open(MainCModalComponent);
@@ -33,7 +33,8 @@ updateMain(){
   });
 }
 doneMain(){
-  this.maintenance.maintenanceAll().subscribe((data) => {
+  this.loading=true;
+  this.maintenance.maintenanceAll().then((data) => {
     for (let ob of data) {
       let y = 0;
       for (y = 0; y < this.checkBoxArray.length; y++) {
@@ -41,17 +42,15 @@ doneMain(){
           ob.isDone = true;
           let stringOb = JSON.stringify(ob);
           let jsonOb = JSON.parse(stringOb);
-          console.log(jsonOb);
-          this.maintenance.maintenanceUpdate(this.checkBoxArray[y], jsonOb).subscribe((data) => { console.log('desativado') });
+          this.maintenance.maintenanceUpdate(this.checkBoxArray[y], jsonOb).then((data) => { console.log('desativado') });
         }
       }
     }
-  });
+  }).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
 }
 loadData() {
-  this.maintenance.maintenanceAll().subscribe((data) => {
+  this.maintenance.maintenanceAll().then((data) => {
     this.dataSource = data;
-    console.log(data);
   });
 }
 onCheckChange(value: string) {

@@ -16,7 +16,7 @@ export class AmbVModalComponent implements OnInit {
   ngOnInit(): void {
     let x=0;
     for(x=0; x<this.data.length; x++){
-      this.ambient.ambientById(this.data[x]).subscribe((value)=>{
+      this.ambient.ambientById(this.data[x]).then((value)=>{
         this.viewValues.push(value);
       });
       console.log(this.viewValues)

@@ -24,14 +24,15 @@ export class CouAModalComponent implements OnInit {
     this.selectedSuject = Object.values(this.data);
     let x;
     for (x = 0; x < this.selectedSuject[0].length; x++) {
-      this.subject.subjectById(this.selectedSuject[0][x]).subscribe((result: any) => {
+      this.subject.subjectById(this.selectedSuject[0][x]).then((result: any) => {
         this.subjectNames = Object.values(result);
         this.subj.push(this.subjectNames[1])
       });
     }    
-    this.course.courseAll().subscribe((courses:any)=>{
+    this.course.courseAll().then((courses:any)=>{
     this.courseSelect=courses;
-    })
+    });
   }
-  addSub() { }
+  addSub() {
+   }
 }

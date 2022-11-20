@@ -1,4 +1,4 @@
-
+<div *ngIf="!loading">
     <div clas="row">
         <form class="input">
             <mat-form-field class="search" appearance="fill">
@@ -65,3 +65,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
+</div>
+<div *ngIf="loading">
+    <mat-spinner class="spinner"></mat-spinner>
+</div>

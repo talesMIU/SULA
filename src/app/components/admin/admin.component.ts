@@ -13,13 +13,15 @@ export class AdminComponent implements OnInit {
   navigate: any;
   constructor(private login:LoginStorageService, private router: Router) { }
 
-  ngOnInit(): void { this.navigate="Ambients";
+  ngOnInit(): void { 
+  this.navigate=sessionStorage.getItem('adminPage');
   let log = this.login.getUserRole();
   if(log !== 'ROLE_ADMIN'){
     this.router.navigate(['']);
   } }
   ngOnDestroy(){}
   goTo(value:string){
-    this.navigate=value
+    sessionStorage.setItem('adminPage', value);
+    this.navigate=sessionStorage.getItem('adminPage');
   }
 }

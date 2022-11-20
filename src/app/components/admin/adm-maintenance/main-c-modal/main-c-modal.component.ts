@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Ambient } from 'src/app/models/model';
+import { Ambient, AmbientMaintenance } from 'src/app/models/model';
 import { AmbientService } from 'src/app/services/ambient.service';
+import { AmbientMaintenanceService } from 'src/app/services/maintenance.service';
 
-import {FormGroup, FormControl} from '@angular/forms';
 @Component({
   selector: 'app-main-c-modal',
   templateUrl: './main-c-modal.component.html',
@@ -11,16 +11,27 @@ import {FormGroup, FormControl} from '@angular/forms';
 })
 export class MainCModalComponent implements OnInit {
 
-  selectedAmbient: any;
+  selectedAmbient!: any;
   ambientArray = new Array();
-
-  constructor(private ambientService: AmbientService) { }
+  startDate = new Date();
+  endDate = new Date();
+  loading!:boolean
+  constructor(private ambientService: AmbientService, private maintenanceService: AmbientMaintenanceService) { }
 
   ngOnInit(): void {
-    this.ambientService.ambientAll().subscribe((data:any)=>{
+    this.loading=false;
+    this.ambientService.ambientAll().then((data:any)=>{
       this.ambientArray=data;
     })
   }
 
-newMaintenance(){}
+newMaintenance(){
+  this.loading=true;
+  const startDateJSON = JSON.stringify(this.startDate).split('"');
+  const endDateJSON = JSON.stringify(this.endDate).split('"');
+  let objString = JSON.stringify({ambient: this.selectedAmbient, startDate: startDateJSON[1], endDate: endDateJSON[1], isDone: false});
+  let objJson = JSON.parse(objString);
+  console.log(objJson);
+  this.maintenanceService.maintenanceCreate(objJson).then((data)=>{console.log(data)}).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
+}
 }

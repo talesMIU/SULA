@@ -10,32 +10,32 @@ import { Observable } from 'rxjs';
 export class ScheduleService{
     constructor(private http: HttpClient) { }
 
-    public scheduleAll(): Observable<Schedule[]> {
+    public scheduleAll(): Promise<Schedule[]> {
         const url = `${environment.SULA_API}${environment.scheServ}/all`;
-        return this.http.get<Schedule[]>(url);
+        return this.http.get<Schedule[]>(url).toPromise();
     }
-    public scheduleCreateUnique(schedule:Schedule): Observable<Schedule[]> {
+    public scheduleCreateUnique(schedule:Schedule): Promise<Schedule[]> {
         const url = `${environment.SULA_API}${environment.scheServ}/create/unique`;
-        return this.http.post<Schedule[]>(url, schedule);
+        return this.http.post<Schedule[]>(url, schedule).toPromise();
     }
-    public scheduleCreateRecurrent(schedule:Schedule): Observable<Schedule[]> {
+    public scheduleCreateRecurrent(schedule:Schedule): Promise<Schedule[]> {
         const url = `${environment.SULA_API}${environment.scheServ}/all`;
-        return this.http.post<Schedule[]>(url, schedule);
+        return this.http.post<Schedule[]>(url, schedule).toPromise();
     }
-    public scheduleUpdate(schedule:Schedule): Observable<Schedule[]> {
+    public scheduleUpdate(schedule:Schedule): Promise<Schedule[]> {
         const url = `${environment.SULA_API}${environment.scheServ}/all`;
-        return this.http.put<Schedule[]>(url, schedule);
+        return this.http.put<Schedule[]>(url, schedule).toPromise();
     }
-    public scheduleById(id:string): Observable<Schedule[]> {
+    public scheduleById(id:string): Promise<Schedule[]> {
         const url = `${environment.SULA_API}${environment.scheServ}/details/${id}`;
-        return this.http.get<Schedule[]>(url);
+        return this.http.get<Schedule[]>(url).toPromise();
     }
-    public scheduleAllById(id:string): Observable<Schedule[]> {
+    public scheduleAllById(id:string): Promise<Schedule[]> {
         const url = `${environment.SULA_API}${environment.scheServ}/all/${id}`;
-        return this.http.get<Schedule[]>(url);
+        return this.http.get<Schedule[]>(url).toPromise();
     }
-    public scheduleAllBySemester(id:string, semester:string): Observable<Schedule[]> {
+    public scheduleAllBySemester(id:string, semester:string): Promise<Schedule[]> {
         const url = `${environment.SULA_API}${environment.scheServ}/all/${id}/${semester}`;
-        return this.http.get<Schedule[]>(url);
+        return this.http.get<Schedule[]>(url).toPromise();
     }
 }

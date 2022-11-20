@@ -16,7 +16,6 @@ export class LoginStorageService{
         let token = Object.values(user)[0];
         let refreshT = Object.values(user)[1];
         let rol = role;
-        console.log(user);
         sessionStorage.setItem(LoginStorageKeys.token, token)
         sessionStorage.setItem(LoginStorageKeys.refreshToken, refreshT);
         sessionStorage.setItem(LoginStorageKeys.role, rol);

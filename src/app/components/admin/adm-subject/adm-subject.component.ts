@@ -17,14 +17,16 @@ export class AdmSubjectComponent implements OnInit {
   dataSource: any;
   searchSubject: any;
   checkBoxArray = new Array();
+  loading!:boolean;
 
   constructor(private dialog: MatDialog, private subject: SubjectService) { }
 
   ngOnInit(): void {
+    this.loading=false;
     this.loadData();
   }
   loadData() {
-    this.subject.subjectAll().subscribe((data) => {
+    this.subject.subjectAll().then((data) => {
       this.dataSource = data
     });
   }
@@ -66,7 +68,8 @@ export class AdmSubjectComponent implements OnInit {
    }
 
   deleteSub() {
-    this.subject.subjectAll().subscribe((data) => {
+    this.loading=true;
+    this.subject.subjectAll().then((data) => {
       for (let ob of data) {
         let y = 0;
         for (y = 0; y < this.checkBoxArray.length; y++) {
@@ -75,7 +78,7 @@ export class AdmSubjectComponent implements OnInit {
             let stringOb = JSON.stringify(ob);
             let jsonOb = JSON.parse(stringOb);
             console.log(jsonOb);
-            this.subject.subjectUpdate(this.checkBoxArray[y], jsonOb).subscribe((data) => { console.log('desativado') });
+            this.subject.subjectUpdate(this.checkBoxArray[y], jsonOb).then((data) => { console.log('desativado') }).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
           }
         }
       }

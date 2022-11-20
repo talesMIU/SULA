@@ -12,24 +12,24 @@ import { HttpResponse } from '@angular/common/http';
 export class NotificationService{
     constructor(private http: HttpClient) { }
 
-    public notificationUpdate (id:string, notification: Notification): Observable<Notification[]> {
+    public notificationUpdate (id:string, notification: Notification): Promise<Notification[]> {
         const url = `${environment.SULA_API}${environment.notiServ}/update/${id}`;
-        return this.http.put<Notification[]>(url,notification);
+        return this.http.put<Notification[]>(url,notification).toPromise();
     }
-    public notificationCreate (notification: Notification): Observable<Notification[]> {
+    public notificationCreate (notification: Notification): Promise<Notification[]> {
         const url = `${environment.SULA_API}${environment.notiServ}/create`;
-        return this.http.post<Notification[]>(url,notification);
+        return this.http.post<Notification[]>(url,notification).toPromise();
     }
-    public notificationById (id:string): Observable<Notification[]> {
+    public notificationById (id:string): Promise<Notification[]> {
         const url = `${environment.SULA_API}${environment.notiServ}/details/${id}`;
-        return this.http.get<Notification[]>(url);
+        return this.http.get<Notification[]>(url).toPromise();
     }
-    public notificationAll (): Observable<Notification[]> {
+    public notificationAll (): Promise<Notification[]> {
         const url = `${environment.SULA_API}${environment.notiServ}/all`;
-        return this.http.get<Notification[]>(url);
+        return this.http.get<Notification[]>(url).toPromise();
     }
-    public notificationByStatus (status:string): Observable<Notification[]> {
+    public notificationByStatus (status:string): Promise<Notification[]> {
         const url = `${environment.SULA_API}${environment.notiServ}/all/${status}`;
-        return this.http.get<Notification[]>(url);
+        return this.http.get<Notification[]>(url).toPromise();
     }
 }

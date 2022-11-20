@@ -22,7 +22,7 @@ export class CourUModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseId = Object.values(this.data)[0];
-    this.course.courseById(this.courseId).subscribe((old:any)=>{this.oldName=old});
+    this.course.courseById(this.courseId).then((old:any)=>{this.oldName=old});
   }
   updateCourse(){}
 }

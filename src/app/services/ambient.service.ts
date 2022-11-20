@@ -12,20 +12,20 @@ import { HttpResponse } from '@angular/common/http';
 export class AmbientService{
     constructor(private http: HttpClient) { }
 
-    public ambientUpdate (id:string, ambient: Ambient): Observable<Ambient[]> {
+    public ambientUpdate (id:string, ambient: Ambient): Promise<Ambient[]> {
         const url = `${environment.SULA_API}${environment.ambiServ}/update/${id}`;
-        return this.http.put<Ambient[]>(url,ambient);
+        return this.http.put<Ambient[]>(url,ambient).toPromise();
     }
-    public ambientCreate (ambient: Ambient): Observable<Ambient[]> {
+    public ambientCreate (ambient: Ambient): Promise<Ambient[]> {
         const url = `${environment.SULA_API}${environment.ambiServ}/create`;
-        return this.http.post<Ambient[]>(url,ambient);
+        return this.http.post<Ambient[]>(url,ambient).toPromise();
     }
-    public ambientById (id:string): Observable<Ambient[]> {
+    public ambientById (id:string): Promise<Ambient[]> {
         const url = `${environment.SULA_API}${environment.ambiServ}/details/${id}`;
-        return this.http.get<Ambient[]>(url);
+        return this.http.get<Ambient[]>(url).toPromise();
     }
-    public ambientAll (): Observable<Ambient[]> {
+    public ambientAll (): Promise<Ambient[]> {
         const url = `${environment.SULA_API}${environment.ambiServ}/all`;
-        return this.http.get<Ambient[]>(url);
+        return this.http.get<Ambient[]>(url).toPromise();
     }
 }

@@ -23,16 +23,19 @@ export class SubCModalComponent implements OnInit {
     { value: 'FOURTH', viewValue: '4°' },
     { value: 'FIFTH', viewValue: '5°' },
     { value: 'SIXTH', viewValue: '6°' },];
+    loading!:boolean;
 
   constructor(public dialogRef: MatDialogRef<SubCModalComponent>,    
     public subject: SubjectService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loading=false;
+  }
 
   newSub() {
     let objString = JSON.stringify({name: this.subName , semester: this.subSem});
     let objJson = JSON.parse(objString);
     console.log(objJson);
-    this.subject.subjectCreate(objJson).subscribe((data)=>{console.log(data)});
+    this.subject.subjectCreate(objJson).then((data)=>{console.log(data)}).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
   }
 }

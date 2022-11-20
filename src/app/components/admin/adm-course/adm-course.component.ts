@@ -18,7 +18,7 @@ export class AdmCourseComponent implements OnInit {
   constructor(private course:CourseService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.course.courseAll().subscribe((data)=>{
+    this.course.courseAll().then((data)=>{
       this.dataSource = data;
     });
   }

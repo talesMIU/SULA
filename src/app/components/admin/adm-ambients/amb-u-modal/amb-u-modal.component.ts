@@ -34,19 +34,46 @@ export class AmbUModalComponent implements OnInit {
   ambientNumber!: number;
   oldName:any;
   ambId:any;
-  ambStat:any;
+  ambStat!:boolean;
   ambientStatus: StatusActive[] = [
     { value: true, viewValue: 'Activate' },
     { value: false, viewValue: 'Deactivate' },];
+  loading!:boolean;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private ambient: AmbientService ) { }
 
   ngOnInit(): void {
+    this.loading=false;
     this.ambId = Object.values(this.data)[0];
-    this.ambient.ambientById(this.ambId).subscribe((old:any)=>{this.oldName = old});
+    this.ambient.ambientById(this.ambId).then((old:any)=>{this.oldName = old});
   }
 onCheckChar(data:string){}
 onCheckAval(data:string){}
 updateAmb(){
-  
+  this.loading = true;
+  this.ambient.ambientById(this.ambId).then((result:any)=>{
+    if(this.ambientName){
+      result.name = this.ambientName;
+    }
+    if(this.aType){
+      result.type = this.aType;
+    }
+    if(this.ambientReference){
+      result.reference = this.ambientReference;
+    }
+    if(this.ambientNumber){
+      result.number = this.ambientNumber;
+    }
+    if(this.aChar){
+      result.characteristics = this.aChar;
+    }
+    if(this.aAval){
+      result.availabilities = this.aAval;
+    }
+    if(this.ambStat){
+      result.isActive = this.ambStat;
+    }
+    this.ambient.ambientUpdate(this.ambId, result).then((data:any)=>{console.log(data)})
+  }).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
 }
 }
