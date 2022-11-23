@@ -60,14 +60,14 @@ export class ControlerComponent implements OnInit {
     {value:'08:00: Lab_5-MicroSistemas'},{value:'08:30: Lab_5-MicroSistemas'}   
   ]
   horaquas: Hora[] = [
-    {value:'09:00: ambients_4-HTML e CSS'},{value:'09:30 ambients_4-HTML e CSS'},
-    {value:'10:00 ambients_4-HTML e CSS'},{value:'10:30 ambients_4-HTML e CSS'},
-    {value:'11:00 ambients_4-HTML e CSS'},{value:'11:30ambients_4-HTML e CSS'}   
+    {value:'09:00 SALA_04-HTML e CSS'},{value:'09:30 SALA_04-HTML e CSS'},
+    {value:'10:00 SALA_04-HTML e CSS'},{value:'10:30 SALA_04-HTML e CSS'},
+    {value:'11:00 SALA_04-HTML e CSS'},{value:'11:30 SALA_04-HTML e CSS'}   
   ]
   horasexs: Hora[] = [
-    {value:'09:00: ambients_6-IA'},{value:'09:30 ambients_6-IA'},
-    {value:'10:00 ambients_6-IA'},{value:'10:30 ambients_6-IA'},
-    {value:'11:00 ambients_6-IA'},{value:'11:30 ambients_6-IA'}    
+    {value:'09:00: SALA_06-IA'},{value:'09:30 SALA_06-IA'},
+    {value:'10:00 SALA_06-IA'},{value:'10:30 SALA_06-IA'},
+    {value:'11:00 SALA_06-IA'},{value:'11:30 SALA_06-IA'}    
   ]
 
 

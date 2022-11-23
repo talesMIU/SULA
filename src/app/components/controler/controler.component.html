@@ -5,20 +5,14 @@
 </header>
 
 <body>
-  <mat-grid-list name="grid" cols="14" rowHeight="7vh">
-    <mat-grid-tile class="tile" [colspan]="2" [rowspan]="2"></mat-grid-tile>
-    <mat-grid-tile class="tile" [colspan]="2" [rowspan]="2">
-      <button mat-raised-button class="btn-primario" (click)="newAgeMod()">Create Schedule</button>
-    </mat-grid-tile>
-    <mat-grid-tile class="tile" [colspan]="4" [rowspan]="2">
-      <div class="radio-button">
-        <mat-radio-group [(ngModel)]="tipoData">
-          <mat-radio-button *ngFor="let date of dates" [value]="date">{{date}}</mat-radio-button>
-        </mat-radio-group>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile class="tile" [colspan]="6" [rowspan]="2"></mat-grid-tile>
-    <div *ngIf="tipoData == sem">
+  <div class="display">
+    <button mat-raised-button class="btn-primario" (click)="newAgeMod()">Create Schedule</button>
+    <mat-radio-group [(ngModel)]="tipoData">
+      <mat-radio-button class="radio-button" *ngFor="let date of dates" [value]="date">{{date}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <mat-grid-list class="grid" cols="14" rowHeight="7vh">
+    <div *ngIf="tipoData === 'Week'">
       <div>
         <mat-grid-tile class="tileSemana" [colspan]="2" [rowspan]="1">Dom</mat-grid-tile>
         <mat-grid-tile class="tileSemana" [colspan]="2" [rowspan]="1">Seg</mat-grid-tile>
@@ -29,13 +23,13 @@
         <mat-grid-tile class="tileSemana" [colspan]="2" [rowspan]="1">Sab</mat-grid-tile>
       </div>
       <div>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">19</mat-grid-tile>
-        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">20</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">21</mat-grid-tile>
-        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">22</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">23</mat-grid-tile>
-        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">24</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">25</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">20</mat-grid-tile>
+        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">21</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">22</mat-grid-tile>
+        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">23</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">24</mat-grid-tile>
+        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">25</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">26</mat-grid-tile>
       </div>
       <mat-grid-tile class="tile" [colspan]="2" [rowspan]="6"></mat-grid-tile>
       <mat-grid-tile class="tile-lista-aula" [colspan]="2" [rowspan]="6">
@@ -119,4 +113,5 @@
     </div>
 
   </mat-grid-list>
+
 </body>
