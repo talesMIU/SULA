@@ -68,6 +68,7 @@ export class LoginComponent implements OnInit {
                   this.router.navigate(['control']);
                   this.loginStorageService.saveUserLogin(data,role.name);
                   sessionStorage.setItem('username',us.name);
+                  sessionStorage.setItem('uId',us.id);
                 }
               }
             }

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UpdateAgendamentoComponent } from './update-agendamento/update-agendamento.component';
 import { NewAgeModComponent } from './new-age-mod/new-age-mod.component';
 import { LoginStorageService } from '../../services/storage/login-storage-service'
+import { UserService } from 'src/app/services/user.service';
 
 interface Curso {
   value: string;
@@ -33,7 +34,8 @@ export class ControlerComponent implements OnInit {
   sem = 'Week';
   men = 'Month';
   userName!: any;
-
+  userId!:any;
+  userObj:any;
   cursos: Curso[] = [
     {value:'ads', viewValue:'Análise e Desenvolvimento de Sistemas'},
     {value:'dsm', viewValue:'Desenvolvimento de Software Multiplataforma'},
@@ -72,15 +74,16 @@ export class ControlerComponent implements OnInit {
 
 
   dates: string[] = ['Week', 'Month'];
-  constructor(private router: Router, public dialog: MatDialog, private login: LoginStorageService) { }
+  constructor(private router: Router, public dialog: MatDialog, private login: LoginStorageService, private user:UserService) { }
 
   ngOnInit(): void {
     let log = this.login.getUserRole();
     if(log !== 'ROLE_USER'){
       this.router.navigate(['']);
     }
-    this.userName = sessionStorage.getItem('username')
+    this.userName = sessionStorage.getItem('username');
     this.tipoData = 'Week';
+    this.user.userById(this.userId).subscribe((data)=>{this.userObj=data})
   }
 
   goLogin(){
