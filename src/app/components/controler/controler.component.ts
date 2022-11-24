@@ -6,6 +6,7 @@ import { NewAgeModComponent } from './new-age-mod/new-age-mod.component';
 import { LoginStorageService } from '../../services/storage/login-storage-service'
 import { UserService } from 'src/app/services/user.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
+import { ShowScheduleModuleComponent } from'src/app/shared/show-schedule-module/show-schedule-module.component';
 
 interface Curso {
   value: string;
@@ -130,7 +131,18 @@ export class ControlerComponent implements OnInit {
 
     });
   }
-  openModalDia(){
-    
+  openModalDia(res:string){
+    res='"'+res+'"';
+    this.schedule.scheduleAll().then((data:any)=>{      
+      for(let dat of data){
+        let diaJSON = JSON.stringify(dat.startDate);        
+        console.log(res);
+        if(diaJSON===res){
+         this.dialog.open(ShowScheduleModuleComponent,{
+          data: dat,
+         })
+        }
+      }
+    });
   }
 }

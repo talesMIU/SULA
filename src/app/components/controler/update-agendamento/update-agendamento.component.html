@@ -9,54 +9,40 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Choose Course</mat-label>
-        <mat-select>
-          <mat-option value="option1">ADS</mat-option>
-          <mat-option value="option2" >Logística</mat-option>
-          <mat-option value="option3">Gestão Empresarial</mat-option>
+        <mat-select [(ngModel)]="courseName" (selectionChange)="onSelectCourse($event)">
+          <mat-option *ngFor="let cour of courseSelect" [value]="cour" >{{cour.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Choose Subject</mat-label>
-        <mat-select>
-          <mat-option value="option1">matéria 1</mat-option>
-          <mat-option value="option2" >matéria 2</mat-option>
-          <mat-option value="option3">matéria 3</mat-option>
+        <mat-select [(ngModel)]="subjectName" [disabled]="isSubDisabled">
+          <mat-option *ngFor="let sub of subjectSelect" [value]="sub" >{{sub.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Choose Ambient</mat-label>
-        <mat-select>
-          <mat-option value="option1">ambients 1</mat-option>
-          <mat-option value="option2" >ambients 2</mat-option>
-          <mat-option value="option3">ambients 3</mat-option>
+        <mat-select [(ngModel)]="ambientName">
+          <mat-option *ngFor="let amb of ambientSelect" [value]="amb">{{amb.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>  
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>What time does it start?</mat-label>
+        <mat-select [(ngModel)]="startTime" (selectionChange)="onSelectTime($event)">
+          <mat-option *ngFor="let tim of timeSelect" [value]="tim">{{tim.viewValue}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="fill">
-        <mat-label>Pick a date</mat-label>
-        <input matInput [matDatepicker]="datepicker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <mat-datepicker #datepicker>
-          <mat-datepicker-actions>
-            <button mat-button matDatepickerCancel>Cancel</button>
-            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-          </mat-datepicker-actions>
-        </mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Wich time is it?</mat-label>
-        <mat-select>
-          <mat-option value="option1">07:00</mat-option>
-          <mat-option value="option2">08:00</mat-option>
-          <mat-option value="option3">09:00</mat-option>
+        <mat-label>What time does it end?</mat-label>
+        <mat-select [(ngModel)]="endTime" [disabled]="isEndDisabled">
+          <mat-option *ngFor="let endTim of endTimeSelect" [value]="endTim" >{{endTim.viewValue}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -72,7 +58,7 @@
       <mat-select>
         <mat-option value="option1">Holyday</mat-option>
         <mat-option value="option2">Health</mat-option>
-        <mat-option value="option3">Outhers</mat-option>
+        <mat-option value="option3">Others</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

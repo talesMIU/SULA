@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Schedule } from 'src/app/models/model';
 import { ScheduleService} from 'src/app/services/schedule.service';
+import { ShowScheduleModuleComponent } from'src/app/shared/show-schedule-module/show-schedule-module.component'
 
-
+import { MatDialog } from '@angular/material/dialog';
 interface Curso {
   value: string;
   viewValue: string;
@@ -30,8 +31,9 @@ export class HomeComponent implements OnInit {
   tipoData:any;
   selectedCurso: any;
   dia: any;
-  sem = 'Semanal';
-  men = 'Mensal';
+  arrayDatas = new Array();
+  sem = 'Week';
+  men = 'Month';
   cursos: Curso[] = [
     {value:'ads', viewValue:'Análise e Desenvolvimento de Sistemas'},
     {value:'dsm', viewValue:'Desenvolvimento de Software Multiplataforma'},
@@ -49,24 +51,27 @@ export class HomeComponent implements OnInit {
   ];
   selectedPeriodo: any;
   periodos: Periodo[] = [
-    {value:'mat', viewValue:'Matutino'},
-    {value:'ves', viewValue:'Vespertino'},
-    {value:'not', viewValue:'Noturno'}
+    {value:'mat', viewValue:'Morning'},
+    {value:'ves', viewValue:'Evening'},
+    {value:'not', viewValue:'Night'}
   ];
+  day = new Date();
   horas: Hora[] = [
     {value:'07:00: Lab_5-MicroSistemas'},{value:'07:30: Lab_5-MicroSistemas'},{value:'08:00: Lab_5-MicroSistemas'},{value:'08:30: Lab_5-MicroSistemas'},{value:'09:00: ambients_1-Gestão_Empresarial'},{value:'09:30 ambients_1-Gestão_Empresarial'},{value:'10:00 ambients_1-Gestão_Empresarial'},{value:'10:30 ambients_1-Gestão_Empresarial'},{value:'11:00 ambients_1-Gestão_Empresarial'},{value:'11:30 ambients_1-Gestão_Empresarial'},    
   ]
 
 
-  dates: string[] = ['Semanal', 'Mensal'];
+  dates: string[] = ['Week', 'Month'];
 
-  constructor(  private router: Router, public scheduleService: ScheduleService) {};
+  constructor(  private router: Router, public scheduleService: ScheduleService,public dialog: MatDialog) {};
 
   ngOnInit(): void {
-    this.scheduleService.scheduleAll().then((data:any)=>(
-      console.log(data)
-    ));
-    this.dia = 'tales';
+    this.scheduleService.scheduleAll().then((data:any)=>{
+      for(let dat of data){
+        this.arrayDatas.push(dat.startDate);
+      }
+      console.log(this.arrayDatas);
+    });
   }
   ngOnDestroy(){}
 
@@ -74,4 +79,18 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  openModalDia(res:string){
+    res='"'+res+'"';
+    this.scheduleService.scheduleAll().then((data:any)=>{      
+      for(let dat of data){
+        let diaJSON = JSON.stringify(dat.startDate);        
+        console.log(res);
+        if(diaJSON===res){
+         this.dialog.open(ShowScheduleModuleComponent,{
+          data: dat,
+         })
+        }
+      }
+    });
+  }
 }

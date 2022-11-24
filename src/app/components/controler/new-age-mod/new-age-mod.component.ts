@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NewAgeModComponent implements OnInit {
 
+  loading!:boolean;
   tipoAgendamento: any;
   courseSelect = new Array();
   courseName!: any;
@@ -49,6 +50,7 @@ export class NewAgeModComponent implements OnInit {
   constructor(private course: CourseService, private subject: SubjectService, private schedule: ScheduleService, private ambient: AmbientService, private user: UserService) { }
 
   ngOnInit(): void {
+    this.loading=false;
     this.isSubDisabled = true;
     this.isEndDisabled = true;
     this.userId = sessionStorage.getItem('uId');
@@ -79,6 +81,7 @@ export class NewAgeModComponent implements OnInit {
     this.isEndDisabled = false;
   }
   newSchedule() {
+    this.loading=true;
     console.log('lop');
     const startDateJSON = JSON.stringify(this.startDate).split('"');
     let dateJSON = JSON.stringify(startDateJSON[1]).split('T');
@@ -91,7 +94,9 @@ export class NewAgeModComponent implements OnInit {
     if(this.tipoAgendamento==='Once'){
       let objString = JSON.stringify({user: this.userObj, ambient:this.ambientName, course: this.courseName, subject: this.subjectName, startDate: newStartDate, endDate: newEndDate});
       let objJson = JSON.parse(objString);
-      this.schedule.scheduleCreateUnique(objJson).then((data)=>{console.log(data)})
+      this.schedule.scheduleCreateUnique(objJson).then((data)=>{console.log(data)}).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
+    }else{
+      setTimeout(()=>{window.location.reload();}, 9000)
     }
   }
 }
