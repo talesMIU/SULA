@@ -4,7 +4,7 @@
   </div>
 </header>
 
-<body>
+<body *ngIf="!loading">
   <div class="display">
     <button mat-raised-button class="btn-primario" (click)="newAgeMod()">Create Schedule</button>
     <mat-radio-group [(ngModel)]="tipoData">
@@ -24,32 +24,29 @@
       </div>
       <div>
         <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">20</mat-grid-tile>
-        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">21</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">21</mat-grid-tile>
         <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">22</mat-grid-tile>
-        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">23</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">23</mat-grid-tile>
         <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">24</mat-grid-tile>
-        <mat-grid-tile class="tile-aula" [colspan]="2" [rowspan]="2">25</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">25</mat-grid-tile>
         <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">26</mat-grid-tile>
       </div>
-      <mat-grid-tile class="tile" [colspan]="2" [rowspan]="6"></mat-grid-tile>
+      <mat-grid-tile class="tile" [colspan]="2" [rowspan]="2"></mat-grid-tile>
       <mat-grid-tile class="tile-lista-aula" [colspan]="2" [rowspan]="6">
-        <div>
-          <button mat-raised-button class="botao" (click)="openModal()" *ngFor="let horaseg of horasegs">{{horaseg.value}}</button>
-          <!--<p class="horario" *ngFor="let horaseg of horasegs">{{horaseg.value}} </p>-->
+        <div *ngIf="!cancel">
+          <button mat-raised-button class="botao" (click)="openModal()"  *ngFor="let horaseg of horasegs">{{horaseg.value}}</button>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile class="tile" [colspan]="2" [rowspan]="6"></mat-grid-tile>
+      <mat-grid-tile class="tile" [colspan]="2" [rowspan]="2"></mat-grid-tile>
       <mat-grid-tile class="tile-lista-aula" [colspan]="2" [rowspan]="6">
         <div>
           <button mat-raised-button class="botao" (click)="openModal()" *ngFor="let horaqua of horaquas">{{horaqua.value}}</button>
-         <!-- <p class="horario" *ngFor="let horaqua of horaquas">{{horaqua.value}}</p>-->
         </div>
       </mat-grid-tile>
       <mat-grid-tile class="tile" [colspan]="2" [rowspan]="6"></mat-grid-tile>
       <mat-grid-tile class="tile-lista-aula" [colspan]="2" [rowspan]="6">
         <div>
           <button mat-raised-button class="botao" (click)="openModal()" *ngFor="let horasex of horasexs">{{horasex.value}}</button>
-          <!--<p class="horario" *ngFor="let horasex of horasexs">{{horasex.value}}</p>-->
         </div>
       </mat-grid-tile>
     </div>
@@ -63,55 +60,54 @@
       <mat-grid-tile class="tileSemana" [colspan]="2" [rowspan]="1">Sex</mat-grid-tile>
       <mat-grid-tile class="tileSemana" [colspan]="2" [rowspan]="1">Sab</mat-grid-tile>
 
-      <mat-grid-tile class="tileDiaMa" [colspan]="2" [rowspan]="1">29</mat-grid-tile>
-      <mat-grid-tile class="tileDiaMa" [colspan]="2" [rowspan]="1">30</mat-grid-tile>
-      <mat-grid-tile class="tileDiaMa" [colspan]="2" [rowspan]="1">31</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">1</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">2</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">3</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">4</mat-grid-tile>
+      
+      <mat-grid-tile class="tileDiaMa" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">30</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaMa" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">31</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">1</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">2</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">3</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">4</button></mat-grid-tile>
 
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">5</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">6</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">7</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">8</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">9</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">10</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">11</mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">5</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">6</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">7</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">8</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">9</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">10</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">11</button></mat-grid-tile>
 
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">12</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">13</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">14</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">15</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">16</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">17</mat-grid-tile>
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">18</mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">12</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">13</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">14</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">15</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">16</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">17</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">18</button></mat-grid-tile>
 
-      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1">19</mat-grid-tile>
-      <mat-grid-tile class="tileDiaA" [colspan]="2" [rowspan]="1">20</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">21</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">22</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">23</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">24</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">25</mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">19</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">20</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">21</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">22</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">23</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaA" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">24</button></mat-grid-tile>
+      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">25</button></mat-grid-tile>
 
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">26</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">27</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">28</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">29</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">30</mat-grid-tile>
+      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">26</button></mat-grid-tile>
+      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">27</button></mat-grid-tile>
+      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">28</button></mat-grid-tile>
+      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">29</button></mat-grid-tile>
+      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia()">30</button></mat-grid-tile>
       <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">1</mat-grid-tile>
       <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">2</mat-grid-tile>
+      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">3</mat-grid-tile>
 
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">12</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">13</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">14</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">15</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">16</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">17</mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1">18</mat-grid-tile>
+
     </div>
 
   </mat-grid-list>
 
+</body>
+
+<body *ngIf="loading">
+  <mat-spinner class="spinner"></mat-spinner>
 </body>

@@ -58,6 +58,7 @@ import { NewAgeModComponent } from './components/controler/new-age-mod/new-age-m
 import { DatePipe } from '@angular/common';
 import { ShareSuccessComponent } from './shared/share-success/share-success.component';
 import { ShareFailedComponent } from './shared/share-failed/share-failed.component';
+import { ShowScheduleModuleComponent } from './components/controler/show-schedule-module/show-schedule-module.component';
 
 
 
@@ -88,7 +89,8 @@ import { ShareFailedComponent } from './shared/share-failed/share-failed.compone
     MainCModalComponent,
     MainUModalComponent,
     ShareSuccessComponent,
-    ShareFailedComponent
+    ShareFailedComponent,
+    ShowScheduleModuleComponent
   ],
   imports: [
     AppRoutingModule,    
