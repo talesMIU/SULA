@@ -17,10 +17,12 @@ export class CouAModalComponent implements OnInit {
   selectedSuject = new Array();
   subjectNames = new Array();
   subj= new Array();
+  loading!:boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private course: CourseService, private subject: SubjectService) { }
 
   ngOnInit(): void {
+    this.loading=false;
     this.selectedSuject = Object.values(this.data);
     let x;
     for (x = 0; x < this.selectedSuject[0].length; x++) {
@@ -34,5 +36,7 @@ export class CouAModalComponent implements OnInit {
     });
   }
   addSub() {
-   }
+    const stringJSON = JSON.stringify(this.courseName);
+    console.log(stringJSON);
+  }
 }

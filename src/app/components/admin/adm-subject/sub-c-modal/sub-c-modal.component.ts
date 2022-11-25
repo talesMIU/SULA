@@ -33,6 +33,7 @@ export class SubCModalComponent implements OnInit {
   }
 
   newSub() {
+    this.loading=true;
     let objString = JSON.stringify({name: this.subName , semester: this.subSem});
     let objJson = JSON.parse(objString);
     console.log(objJson);

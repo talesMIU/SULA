@@ -30,14 +30,17 @@ export class SubUModalComponent implements OnInit {
       { value: true, viewValue: 'Activate' },
       { value: false, viewValue: 'Deactivate' },];
     oldName:any;
+    loading!:boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public subject: SubjectService) { }
 
   ngOnInit() {    
+    this.loading=false;
     this.subId = Object.values(this.data)[0];
     this.subject.subjectById(this.subId).then((old:any)=>{this.oldName = old});
   }
   updateSub() {
+    this.loading=true;
       this.subject.subjectById(this.subId).then((values: any) => {
        if(this.subName){
         values.name=this.subName;
@@ -46,7 +49,7 @@ export class SubUModalComponent implements OnInit {
        }else if(this.subStat){
         values.isActive=this.subStat;
        }
-       this.subject.subjectUpdate(this.subId, values).then((data:any)=>{console.log(data)});
+       this.subject.subjectUpdate(this.subId, values).then((data:any)=>{console.log(data)}).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
     }
 
     );
