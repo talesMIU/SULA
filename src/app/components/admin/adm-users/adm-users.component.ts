@@ -31,6 +31,7 @@ const ELEMENT_DATA: Professor[] = [
 
 export class AdmUsersComponent implements OnInit {
 
+  selectedLanguage!:any;
   displayedColumns: string[] = ['email', 'name', 'role', 'isActive', 'createdOn', 'updatedOn'];
   dataSource: any;
   searchambients: any;
@@ -41,6 +42,7 @@ export class AdmUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading=false;
+    this.selectedLanguage=localStorage.getItem('lang');
     this.user.userAll().then((data:any)=>{
       this.dataSource = data;
     });

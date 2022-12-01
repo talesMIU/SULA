@@ -1,21 +1,27 @@
-<h2 mat-dialog-title>Update Course</h2>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+
+</div>
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+
+</div>
+<h2 mat-dialog-title>Atualizar Curso</h2>
 <mat-dialog-content class="mat-typography">
     <div *ngIf="!loading">
         <div>
             <mat-form-field appearance="fill">
-                <mat-label>Current Name</mat-label>
+                <mat-label>Nome atual</mat-label>
                 <input matInput type="text" disabled="disable">{{oldName.name}}
             </mat-form-field>
         </div>
         <div>
             <mat-form-field appearance="fill">
-                <mat-label>Name</mat-label>
+                <mat-label>Nome</mat-label>
                 <input matInput [(ngModel)]="courseName">
             </mat-form-field>
         </div>
         <div>
             <mat-form-field appearance="fill">
-                <mat-label>New Status (Optional)</mat-label>
+                <mat-label>Novo Status (Opcional)</mat-label>
                 <mat-select [(ngModel)]="courseStat">
                     <mat-option *ngFor="let stat of courseStatus" [value]="stat.value">
                         {{stat.viewValue}}
@@ -29,6 +35,6 @@
     </div>    
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button cdkFocusInitial (click)="updateCourse()">Confirm</button>
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button cdkFocusInitial (click)="updateCourse()">Confirma</button>
 </mat-dialog-actions>

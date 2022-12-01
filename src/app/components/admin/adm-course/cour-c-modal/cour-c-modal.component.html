@@ -1,13 +1,19 @@
-<h2 mat-dialog-title>New Course</h2>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+
+</div>
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+
+</div>
+<h2 mat-dialog-title>Novo Curso</h2>
 <mat-dialog-content class="mat-typography">
   <div>
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
+      <mat-label>Nome</mat-label>
       <input matInput [(ngModel)]="courseName">
     </mat-form-field>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="newCourse()">Confirm</button>
+  <button mat-button mat-dialog-close>Cancela</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="newCourse()">Confirma</button>
 </mat-dialog-actions>

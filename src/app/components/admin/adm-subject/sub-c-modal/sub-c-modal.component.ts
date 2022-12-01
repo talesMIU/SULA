@@ -24,11 +24,14 @@ export class SubCModalComponent implements OnInit {
     { value: 'FIFTH', viewValue: '5°' },
     { value: 'SIXTH', viewValue: '6°' },];
     loading!:boolean;
+    selectedLanguage!:any;
+    
 
   constructor(public dialogRef: MatDialogRef<SubCModalComponent>,    
     public subject: SubjectService) { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loading=false;
   }
 

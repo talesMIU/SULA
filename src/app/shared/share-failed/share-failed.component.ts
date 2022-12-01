@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShareFailedComponent implements OnInit {
 
+  selectedLanguage!: any;
   constructor() { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
   }
 
 }

@@ -11,6 +11,7 @@ import { SubShowAllModalComponent } from'./sub-show-all-modal/sub-show-all-modal
 })
 export class AdmCourseComponent implements OnInit {
 
+  selectedLanguage!:any;
   displayedColumns: string[] = ['id', 'name', 'isActive', 'createdOn', 'updatedOn'];
   dataSource: any;
   checkBoxArray = new Array();
@@ -19,6 +20,7 @@ export class AdmCourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading=false;
+    this.selectedLanguage=localStorage.getItem('lang');
     this.course.courseAll().then((data)=>{
       this.dataSource = data;
     });

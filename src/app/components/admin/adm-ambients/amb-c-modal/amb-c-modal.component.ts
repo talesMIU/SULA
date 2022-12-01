@@ -35,9 +35,12 @@ export class AmbCModalComponent implements OnInit {
   ambientReference!:string;
   ambientNumber!: number;
   loading!:boolean;
+  selectedLanguage!:any;
+  
+
   constructor(private ambient: AmbientService, public dialog: MatDialog ) { }
 
-  ngOnInit(): void {this.loading=false;  }
+  ngOnInit(): void {this.loading=false;this.selectedLanguage = localStorage.getItem('lang');  }
   onCheckChar(data:string){
     if (this.aChar.length === 0) {
       this.aChar.push(data);

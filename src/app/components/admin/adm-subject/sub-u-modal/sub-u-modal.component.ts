@@ -31,10 +31,13 @@ export class SubUModalComponent implements OnInit {
       { value: false, viewValue: 'Deactivate' },];
     oldName:any;
     loading!:boolean;
+    selectedLanguage!:any;
+    
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public subject: SubjectService) { }
 
   ngOnInit() {    
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loading=false;
     this.subId = Object.values(this.data)[0];
     this.subject.subjectById(this.subId).then((old:any)=>{this.oldName = old});

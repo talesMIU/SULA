@@ -29,6 +29,7 @@ export class AdmAmbientsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.loading=false;
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loadData();
   }
 

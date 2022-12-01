@@ -1,35 +1,74 @@
-<h2 mat-dialog-title>New Maintenance</h2>
-<mat-dialog-content class="mat-typography">
-  <div *ngIf="!loading">
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Select Ambient</mat-label>
-        <mat-select [(ngModel)]="selectedAmbient">
-          <mat-option  *ngFor="let ambient of ambientArray" [value]="ambient">
-            {{ambient.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+  <h2 mat-dialog-title>New Maintenance</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Select Ambient</mat-label>
+          <mat-select [(ngModel)]="selectedAmbient">
+            <mat-option  *ngFor="let ambient of ambientArray" [value]="ambient">
+              {{ambient.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date" [(ngModel)]="startDate" required>
+            <input matEndDate placeholder="End date" [(ngModel)]="endDate" required>
+          </mat-date-range-input>
+          <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
     </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate placeholder="Start date" [(ngModel)]="startDate" required>
-          <input matEndDate placeholder="End date" [(ngModel)]="endDate" required>
-        </mat-date-range-input>
-        <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
-      </mat-form-field>
+    <div *ngIf="loading">
+      <mat-spinner></mat-spinner>
     </div>
-  </div>
-  <div *ngIf="loading">
-    <mat-spinner></mat-spinner>
-  </div>
-   
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button cdkFocusInitial (click)="newMaintenance()">Confirm</button>
-</mat-dialog-actions>
+     
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="newMaintenance()">Confirm</button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+  <h2 mat-dialog-title>Nova Manutenção</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Selecione o Ambientez</mat-label>
+          <mat-select [(ngModel)]="selectedAmbient">
+            <mat-option  *ngFor="let ambient of ambientArray" [value]="ambient">
+              {{ambient.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Escolha as datas</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date" [(ngModel)]="startDate" required>
+            <input matEndDate placeholder="End date" [(ngModel)]="endDate" required>
+          </mat-date-range-input>
+          <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+     
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button cdkFocusInitial (click)="newMaintenance()">Confirma</button>
+  </mat-dialog-actions>
+</div>

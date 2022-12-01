@@ -30,10 +30,13 @@ export class UserUModalComponent implements OnInit {
   userStatus: StatusActive[] = [
     { value: true, viewValue: 'Activate' },
     { value: false, viewValue: 'Deactivate' },];
+    selectedLanguage!:any;
+    
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private us: UserService) { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.userId = Object.values(this.data)[0];
     this.us.userById(this.userId).subscribe((old:any)=>{this.oldName = old});
   }

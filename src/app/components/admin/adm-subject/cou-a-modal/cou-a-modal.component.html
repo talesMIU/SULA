@@ -1,24 +1,52 @@
-<h2 mat-dialog-title>Add Subject to Course</h2>
-<mat-dialog-content class="mat-typography">
-  <div *ngIf="!loading">
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Course</mat-label>
-        <mat-select [(ngModel)]="courseId">
-          <mat-option  *ngFor="let cour of courseSelect" [value]="cour.id">
-            {{cour.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+  <h2 mat-dialog-title>Add Subject to Course</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Course</mat-label>
+          <mat-select [(ngModel)]="courseId">
+            <mat-option  *ngFor="let cour of courseSelect" [value]="cour.id">
+              {{cour.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+          <h3>Selected Subjects</h3>
+          <h4 *ngFor="let s of subj">{{s}}</h4>
+      </div>
     </div>
-    <div>
-        <h3>Selected Subjects</h3>
-        <h4 *ngFor="let s of subj">{{s}}</h4>
+      <div *ngIf="loading"><mat-spinner></mat-spinner></div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="addSub()">Confirm</button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+  <h2 mat-dialog-title>Inserir em Curso</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Curso</mat-label>
+          <mat-select [(ngModel)]="courseId">
+            <mat-option  *ngFor="let cour of courseSelect" [value]="cour.id">
+              {{cour.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+          <h3>Matérias Selecionadas</h3>
+          <h4 *ngFor="let s of subj">{{s}}</h4>
+      </div>
     </div>
-  </div>
-    <div *ngIf="loading"><mat-spinner></mat-spinner></div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button cdkFocusInitial (click)="addSub()">Confirm</button>
-</mat-dialog-actions>
+      <div *ngIf="loading"><mat-spinner></mat-spinner></div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button cdkFocusInitial (click)="addSub()">Confirma</button>
+  </mat-dialog-actions>
+</div>

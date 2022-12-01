@@ -1,46 +1,96 @@
-<h2 mat-dialog-title>New Ambient</h2>
-<mat-dialog-content class="mat-typography">
-  <div *ngIf="!loading">
-    <div>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+  <h2 mat-dialog-title>New Ambient</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="ambientName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select [(ngModel)]="aType">
+            <mat-option  *ngFor="let type of ambType" [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Reference</mat-label>
+          <input matInput [(ngModel)]="ambientReference">
+        </mat-form-field>
+      </div>
       <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="ambientName">
+        <mat-label>Number</mat-label>
+        <input matInput [(ngModel)]="ambientNumber">
       </mat-form-field>
+      <div>
+           <mat-label>Characteristics</mat-label></div><div>
+              <mat-checkbox class="checkBox" *ngFor="let characteristics of ambChar" (change)="onCheckChar(characteristics.value)">{{characteristics.viewValue}}</mat-checkbox>
+      </div>
+      <div>
+          <mat-label>Availabilities</mat-label></div><div>
+          <mat-checkbox class="checkBox" *ngFor="let available of ambAval" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
+      </div>
     </div>
-    <div>
+    <div *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="newAmb()">Confirm</button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+  <h2 mat-dialog-title>Novo Ambiente</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput [(ngModel)]="ambientName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo</mat-label>
+          <mat-select [(ngModel)]="aType">
+            <mat-option  *ngFor="let type of ambType" [value]="type.value">
+              {{type.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Referência</mat-label>
+          <input matInput [(ngModel)]="ambientReference">
+        </mat-form-field>
+      </div>
       <mat-form-field appearance="fill">
-        <mat-label>Type</mat-label>
-        <mat-select [(ngModel)]="aType">
-          <mat-option  *ngFor="let type of ambType" [value]="type.value">
-            {{type.viewValue}}
-          </mat-option>
-        </mat-select>
+        <mat-label>Número</mat-label>
+        <input matInput [(ngModel)]="ambientNumber">
       </mat-form-field>
+      <div>
+           <mat-label>Características</mat-label></div><div>
+              <mat-checkbox class="checkBox" *ngFor="let characteristics of ambChar" (change)="onCheckChar(characteristics.value)">{{characteristics.viewValue}}</mat-checkbox>
+      </div>
+      <div>
+          <mat-label>Disponibilidade</mat-label></div><div>
+          <mat-checkbox class="checkBox" *ngFor="let available of ambAval" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
+      </div>
     </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Reference</mat-label>
-        <input matInput [(ngModel)]="ambientReference">
-      </mat-form-field>
+    <div *ngIf="loading">
+      <mat-spinner></mat-spinner>
     </div>
-    <mat-form-field appearance="fill">
-      <mat-label>Number</mat-label>
-      <input matInput [(ngModel)]="ambientNumber">
-    </mat-form-field>
-    <div>
-         <mat-label>Characteristics</mat-label></div><div>
-            <mat-checkbox class="checkBox" *ngFor="let characteristics of ambChar" (change)="onCheckChar(characteristics.value)">{{characteristics.viewValue}}</mat-checkbox>
-    </div>
-    <div>
-        <mat-label>Availabilities</mat-label></div><div>
-        <mat-checkbox class="checkBox" *ngFor="let available of ambAval" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
-    </div>
-  </div>
-  <div *ngIf="loading">
-    <mat-spinner></mat-spinner>
-  </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button cdkFocusInitial (click)="newAmb()">Confirm</button>
-</mat-dialog-actions>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button cdkFocusInitial (click)="newAmb()">Confirma</button>
+  </mat-dialog-actions>
+</div>

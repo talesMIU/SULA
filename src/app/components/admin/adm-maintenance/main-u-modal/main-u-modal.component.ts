@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-u-modal.component.scss']
 })
 export class MainUModalComponent implements OnInit {
-
+  selectedLanguage!:any;
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
   }
   updateMaintenance(){}
 }

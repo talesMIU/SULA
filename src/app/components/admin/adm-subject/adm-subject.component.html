@@ -1,16 +1,31 @@
 <div *ngIf="!loading">
-    <div clas="row">
-        <form class="input">
-            <mat-form-field class="search" appearance="fill">
-                <mat-label>Search</mat-label>
-                <input matInput placeholder="" value="">
-            </mat-form-field>
-            <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario"  (click)="createSub()">Create</button>
-            <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"  (click)="updateSub()">Update</button>
-            <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-secundario"  (click)="addCourse()">Add to Course</button>
-            <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario" (click)="deleteSub()">Deactivate</button>
-            
-        </form>
+    <div *ngIf="selectedLanguage!=='PORTUGUESE'">
+        <div clas="row">
+            <form class="input">
+                <mat-form-field class="search" appearance="fill">
+                    <mat-label>Search</mat-label>
+                    <input matInput placeholder="" value="">
+                </mat-form-field>
+                <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createSub()">Create</button>
+                <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"  (click)="updateSub()">Update</button>    
+                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-secundario"  (click)="addCourse()">Add to Course</button>
+                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario"  (click)="deleteSub()">Deactivate</button>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="selectedLanguage==='PORTUGUESE'">
+        <div clas="row">
+            <form class="input">
+                <mat-form-field class="search" appearance="fill">
+                    <mat-label>Search</mat-label>
+                    <input matInput placeholder="" value="">
+                </mat-form-field>
+                <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createSub()">Criar</button>
+                <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"  (click)="updateSub()">Atualizar</button>    
+                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-secundario"  (click)="addCourse()">Inserir em Curso</button>
+                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario"  (click)="deleteSub()">Desativar</button>
+            </form>
+        </div>
     </div>
     <div class="table-tile">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

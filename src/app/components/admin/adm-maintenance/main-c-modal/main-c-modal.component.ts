@@ -16,6 +16,8 @@ export class MainCModalComponent implements OnInit {
   startDate = new Date();
   endDate = new Date();
   loading!:boolean
+  selectedLanguage!:any;
+  
   constructor(private ambientService: AmbientService, private maintenanceService: AmbientMaintenanceService) { }
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class MainCModalComponent implements OnInit {
   }
 
 newMaintenance(){
+  this.selectedLanguage = localStorage.getItem('lang');
   this.loading=true;
   const startDateJSON = JSON.stringify(this.startDate).split('"');
   const endDateJSON = JSON.stringify(this.endDate).split('"');

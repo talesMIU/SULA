@@ -24,10 +24,13 @@ export class UserCModalComponent implements OnInit {
     { value: 'ROLE_USER', viewValue: 'User' },
   ];
   loading!:boolean;
+  selectedLanguage!:any;
+  
 
   constructor(private user:UserService) { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loading=false;
   }
   newUser() {

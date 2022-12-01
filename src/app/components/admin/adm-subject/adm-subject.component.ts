@@ -13,6 +13,7 @@ import { CouAModalComponent } from './cou-a-modal/cou-a-modal.component';
 })
 export class AdmSubjectComponent implements OnInit {
 
+  selectedLanguage!:any;
   displayedColumns: string[] = ['id', 'name', 'semester', 'isActive', 'createdOn', 'updatedOn'];
   dataSource: any;
   searchSubject: any;
@@ -23,6 +24,7 @@ export class AdmSubjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading=false;
+    this.selectedLanguage=localStorage.getItem('lang');
     this.loadData();
   }
   loadData() {

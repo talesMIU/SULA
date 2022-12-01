@@ -13,10 +13,13 @@ export class SubShowAllModalComponent implements OnInit {
   subjects=new Array();
   courseName!:any;
   courseId!:any;
+  selectedLanguage!:any;
+  
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private course: CourseService) { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loading=false;
     this.courseId = Object.values(this.data)[0];
     this.course.courseById(this.courseId).then((data:any)=>{

@@ -1,28 +1,60 @@
-<h2 mat-dialog-title>New Subject</h2>
-<mat-dialog-content class="mat-typography">
-  <div *ngIf="!loading">
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput type="text" [(ngModel)]="subName">
-      </mat-form-field>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+  <h2 mat-dialog-title>New Subject</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [(ngModel)]="subName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Semester</mat-label>
+          <mat-select [(ngModel)]="subSem">
+            <mat-option  *ngFor="let semester of subSemester" [value]="semester.value">
+              {{semester.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Semester</mat-label>
-        <mat-select [(ngModel)]="subSem">
-          <mat-option  *ngFor="let semester of subSemester" [value]="semester.value">
-            {{semester.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div *ngIf="loading">
+        <mat-spinner></mat-spinner>
+      </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="newSub()">Confirm</button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+  <h2 mat-dialog-title>New Subject</h2>
+  <mat-dialog-content class="mat-typography">
+    <div *ngIf="!loading">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" [(ngModel)]="subName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Semestre</mat-label>
+          <mat-select [(ngModel)]="subSem">
+            <mat-option  *ngFor="let semester of subSemester" [value]="semester.value">
+              {{semester.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-  </div>
-    <div *ngIf="loading">
-      <mat-spinner></mat-spinner>
-    </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button cdkFocusInitial (click)="newSub()">Confirm</button>
-</mat-dialog-actions>
+      <div *ngIf="loading">
+        <mat-spinner></mat-spinner>
+      </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button cdkFocusInitial (click)="newSub()">Confirma</button>
+  </mat-dialog-actions>
+</div>

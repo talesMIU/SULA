@@ -12,7 +12,9 @@ export class ShowScheduleModuleComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialog: MatDialog) { }
   isUser!:boolean;
   userType: any;
+  selectedLanguage!: any; 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.subject = this.data;
     console.log(this.subject);
     this.userType = sessionStorage.getItem('username');

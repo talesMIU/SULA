@@ -10,9 +10,11 @@ export class CourCModalComponent implements OnInit {
 
   courseName!:string;
   courseSubject!:string;
+  selectedLanguage!:any;
   constructor() { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
   }
   newCourse(){}
 }

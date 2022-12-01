@@ -20,9 +20,12 @@ export class CouAModalComponent implements OnInit {
   loading!: boolean;
   xJSON!: string;
   yJSON!: string;
+  selectedLanguage!:any;
+  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private course: CourseService, private subject: SubjectService) { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loading = false;
     this.selectedSuject = Object.values(this.data);
     let x;

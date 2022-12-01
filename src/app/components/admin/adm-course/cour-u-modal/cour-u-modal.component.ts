@@ -16,12 +16,15 @@ export class CourUModalComponent implements OnInit {
   courseId:any;
   oldName:any;
   loading!:boolean;
+  selectedLanguage!:any;
+  
   courseStatus: StatusActive[] = [
     { value: true, viewValue: 'Activate' },
     { value: false, viewValue: 'Deactivate' },];
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public course: CourseService ) { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loading=false;
     this.courseId = Object.values(this.data)[0];
     this.course.courseById(this.courseId).then((old:any)=>{this.oldName=old});

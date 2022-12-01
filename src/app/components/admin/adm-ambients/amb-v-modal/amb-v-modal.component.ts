@@ -10,10 +10,13 @@ import { AmbientService } from 'src/app/services/ambient.service';
 export class AmbVModalComponent implements OnInit {
 
   viewValues = new Array;
+  selectedLanguage!:any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private ambient:AmbientService) { }
 
   ngOnInit(): void {
+    
+  this.selectedLanguage = localStorage.getItem('lang');
     let x=0;
     for(x=0; x<this.data.length; x++){
       this.ambient.ambientById(this.data[x]).then((value)=>{

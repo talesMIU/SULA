@@ -39,10 +39,13 @@ export class AmbUModalComponent implements OnInit {
     { value: true, viewValue: 'Activate' },
     { value: false, viewValue: 'Deactivate' },];
   loading!:boolean;
+  selectedLanguage!:any;
+  
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private ambient: AmbientService ) { }
 
   ngOnInit(): void {
+    this.selectedLanguage = localStorage.getItem('lang');
     this.loading=false;
     this.ambId = Object.values(this.data)[0];
     this.ambient.ambientById(this.ambId).then((old:any)=>{this.oldName = old});

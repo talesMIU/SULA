@@ -1,14 +1,29 @@
 <div *ngIf="!loading">
-    <div clas="row">
-        <form class="input">
-            <mat-form-field class="search" appearance="fill">
-                <mat-label>Search</mat-label>
-                <input matInput placeholder="" value="">
-            </mat-form-field>
-            <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createUser()">Create</button>
-            <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"(click)="updateUser()">Update</button>
-            <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario" (click)="deactivateUser()">Deactivate</button>
-        </form>
+    <div *ngIf="selectedLanguage!=='PORTUGUESE'">
+        <div clas="row">
+            <form class="input">
+                <mat-form-field class="search" appearance="fill">
+                    <mat-label>Search</mat-label>
+                    <input matInput placeholder="" value="">
+                </mat-form-field>
+                <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createUser()">Create</button>
+                <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"  (click)="updateUser()">Update</button>    
+                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario"  (click)="deactivateUser()">Deactivate</button>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="selectedLanguage==='PORTUGUESE'">
+        <div clas="row">
+            <form class="input">
+                <mat-form-field class="search" appearance="fill">
+                    <mat-label>Pesquisar</mat-label>
+                    <input matInput placeholder="" value="">
+                </mat-form-field>
+                <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createUser()">Criar</button>
+                <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"  (click)="updateUser()">Atualizar</button>  
+                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario"  (click)="deactivateUser()">Desativar</button>
+            </form>
+        </div>
     </div>
     <div class="table-tile">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

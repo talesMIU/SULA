@@ -13,6 +13,7 @@ import { MainUModalComponent } from './main-u-modal/main-u-modal.component';
 
 export class AdmMaintenanceComponent implements OnInit {
 
+  selectedLanguage!:any;
   displayedColumns: string[] = ['id', 'ambientName', 'isDone','createdOn', 'endDate', 'updatedOn', ];
   dataSource: any;
   checkBoxArray = new Array();
@@ -21,6 +22,7 @@ export class AdmMaintenanceComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.selectedLanguage=localStorage.getItem('lang');
   }
 createMain(){
   this.dialog.open(MainCModalComponent);

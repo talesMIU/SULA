@@ -1,47 +1,98 @@
-<h2 mat-dialog-title>Update User</h2>
-<mat-dialog-content class="mat-typography">
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Current Name</mat-label>
-      <input matInput type="text" disabled="disable">{{oldName.name}}
-    </mat-form-field>
-  </div>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+  <h2 mat-dialog-title>Update User</h2>
+  <mat-dialog-content class="mat-typography">
     <div>
       <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput type="text" [(ngModel)]="userName">
+        <mat-label>Current Name</mat-label>
+        <input matInput type="text" disabled="disable">{{oldName.name}}
       </mat-form-field>
     </div>
-    <div>
+      <div>
         <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput type="text" [(ngModel)]="userEmail">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [(ngModel)]="userName">
         </mat-form-field>
       </div>
-    <div>
-        <div>
-            <mat-form-field appearance="fill">
-              <mat-label>User Name</mat-label>
-              <input matInput type="text" [(ngModel)]="userUsName">
-            </mat-form-field>
-          </div>
+      <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" [(ngModel)]="userEmail">
+          </mat-form-field>
+        </div>
+      <div>
           <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Temporary Password</mat-label>
-              <input matInput type="text" [(ngModel)]="userPassword">
-            </mat-form-field>
-          </div>
+              <mat-form-field appearance="fill">
+                <mat-label>User Name</mat-label>
+                <input matInput type="text" [(ngModel)]="userUsName">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Temporary Password</mat-label>
+                <input matInput type="text" [(ngModel)]="userPassword">
+              </mat-form-field>
+            </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Role</mat-label>
+          <mat-select [(ngModel)]="userRole">
+            <mat-option  *ngFor="let role of userRoles" [value]="role.value">
+              {{role.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateUser()">Confirm</button>
+  </mat-dialog-actions>
+</div>
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+  <h2 mat-dialog-title>Atualizar Usuário</h2>
+  <mat-dialog-content class="mat-typography">
+    <div>
       <mat-form-field appearance="fill">
-        <mat-label>Role</mat-label>
-        <mat-select [(ngModel)]="userRole">
-          <mat-option  *ngFor="let role of userRoles" [value]="role.value">
-            {{role.viewValue}}
-          </mat-option>
-        </mat-select>
+        <mat-label>Nome Atual</mat-label>
+        <input matInput type="text" disabled="disable">{{oldName.name}}
       </mat-form-field>
     </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateUser()">Confirm</button>
-</mat-dialog-actions>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" [(ngModel)]="userName">
+        </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" [(ngModel)]="userEmail">
+          </mat-form-field>
+        </div>
+      <div>
+          <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Nome de Usuário</mat-label>
+                <input matInput type="text" [(ngModel)]="userUsName">
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>Senha Temporária</mat-label>
+                <input matInput type="text" [(ngModel)]="userPassword">
+              </mat-form-field>
+            </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Função</mat-label>
+          <mat-select [(ngModel)]="userRole">
+            <mat-option  *ngFor="let role of userRoles" [value]="role.value">
+              {{role.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateUser()">Confirma</button>
+  </mat-dialog-actions>
+</div>
