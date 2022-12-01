@@ -4,7 +4,7 @@
     </div>
 </header>
 
-<body>
+<body *ngIf="selectedLanguage!=='PORTUGUESE'">
     <form [formGroup]="formUserLogin">
         <div class="display">
             <mat-form-field class="form" appearance="fill">
@@ -17,6 +17,23 @@
             </mat-form-field>
             <button class="btn-log" mat-raised-button (click)="goLog()">Enter</button>
             <button class="btn-cancel" mat-raised-button (click)="goBack()">Cancel</button>
+        </div>
+    </form>
+</body>
+
+<body *ngIf="selectedLanguage==='PORTUGUESE'">
+    <form [formGroup]="formUserLogin">
+        <div class="display">
+            <mat-form-field class="form" appearance="fill">
+                <mat-label>Nome de Usuário</mat-label>
+                <input matInput [(ngModel)]="userN" formControlName="username">
+            </mat-form-field>
+            <mat-form-field class="form" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input matInput type="password" [(ngModel)]="pass" formControlName="password">
+            </mat-form-field>
+            <button class="btn-log" mat-raised-button (click)="goLog()">Entrar</button>
+            <button class="btn-cancel" mat-raised-button (click)="goBack()">Cancelar</button>
         </div>
     </form>
 </body>

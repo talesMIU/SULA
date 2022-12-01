@@ -44,9 +44,11 @@ export class SubUModalComponent implements OnInit {
       this.subject.subjectById(this.subId).then((values: any) => {
        if(this.subName){
         values.name=this.subName;
-       }else if(this.subSem){
+       }
+       if(this.subSem){
         values.semester=this.subSem;
-       }else if(this.subStat){
+       }
+       if(this.subStat){
         values.isActive=this.subStat;
        }
        this.subject.subjectUpdate(this.subId, values).then((data:any)=>{console.log(data)}).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});

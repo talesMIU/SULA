@@ -14,7 +14,7 @@ import { JsonPipe } from '@angular/common';
 })
 
 export class LoginComponent implements OnInit {
-
+  selectedLanguage!:any;
   userN: string = "";
   pass: string = "";
   dialog: any;
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.selectedLanguage=localStorage.getItem('lang');
     this.createForm(new UserLogin());
   }
   ngOnDestroy() { }
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
       if (data) {
         this.sessionLog.token = JSON.stringify(Object.values(data)[0]);
         this.loginStorageService.saveUserLogin(data,'');
-        this.userService.userAll().subscribe((user: any) => {
+        this.userService.userAll().then((user: any) => {
           for (let us of user) {
             if (us.username === this.userN) {
               for(let role of us.roles){

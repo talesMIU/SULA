@@ -63,8 +63,8 @@ export class ControlerComponent implements OnInit {
     { value: 'not', viewValue: 'Noturno' }
   ];
   horasegs: Hora[] = [
-    { value: '07:00: Lab_5-MicroSistemas' }, { value: '07:30: Lab_5-MicroSistemas' },
-    { value: '08:00: Lab_5-MicroSistemas' }, { value: '08:30: Lab_5-MicroSistemas' }
+    { value: '07:00: SALA_03-Ingles I' }, { value: '07:30: SALA_03-Ingles I' },
+    { value: '08:00: SALA_03-Ingles I' }, { value: '08:30: SALA_03-Ingles I' }
   ]
   horaquas: Hora[] = [
     { value: '09:00 SALA_04-HTML e CSS' }, { value: '09:30 SALA_04-HTML e CSS' },
@@ -83,15 +83,15 @@ export class ControlerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading=false;
-    let log = this.login.getUserRole();
-    if (log !== 'ROLE_USER') {
-      this.router.navigate(['']);
-    }
+    //let log = this.login.getUserRole();
+    //if (log !== 'ROLE_USER') {
+     // this.router.navigate(['']);
+    //}
     this.cancel=false;
-    this.userName = sessionStorage.getItem('username');
+    //this.userName = sessionStorage.getItem('username');
     this.tipoData = 'Week';
-    this.userId = sessionStorage.getItem('uId');
-    this.getMySchedule();
+    //this.userId = sessionStorage.getItem('uId');
+   //this.getMySchedule();
   }
 
   getMySchedule() {

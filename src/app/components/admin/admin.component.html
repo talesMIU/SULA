@@ -1,41 +1,73 @@
 <header class="header-container">
-    <div class="header-text">
-        Admin - {{navigate}}
+    <div *ngIf="selectedLanguage!=='PORTUGUESE'">
+        <div class="header-text">
+            Admin - {{headerName}}
+            <mat-icon class="login" aria-hidden="false" aria-label="Login icon" (click)="goSetting()">settings_applications</mat-icon>
+        </div>  
     </div>
+    <div *ngIf="selectedLanguage==='PORTUGUESE'">
+        <div class="header-text">
+            Administrador - {{headerName}}
+            <mat-icon class="login" aria-hidden="false" aria-label="Login icon" (click)="goSetting()">settings_applications</mat-icon>
+        </div>  
+    </div>
+      
 </header>
 
-<body class="body">
-    <div class="side-nav">
-        <mat-list class="list" role="list">
-            <mat-list-item role="listitem"><button mat-button class="sideButton"
-                    (click)="goTo('Ambients')">Ambient</button>
-            </mat-list-item>
-            <mat-list-item role="listitem"><button mat-button class="sideButton"
-                (click)="goTo('Course')">Course</button>
-            </mat-list-item>
-            <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('Maintenance')">Maintenance</button>
-            </mat-list-item>
-            <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('Subject')">Subject</button>
-            </mat-list-item>
-            <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('User')">User</button>
-            </mat-list-item>
-
-        </mat-list>
+<body class="body" >
+    <div *ngIf="selectedLanguage!=='PORTUGUESE'">
+        <div class="side-nav">
+            <mat-list class="list" role="list">
+                <mat-list-item role="listitem"><button mat-button class="sideButton"
+                        (click)="goTo('Ambients')">Ambients</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton"
+                    (click)="goTo('Course')">Course</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('Maintenance')">Maintenance</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('Subject')">Subject</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('User')">User</button>
+                </mat-list-item>
+    
+            </mat-list>
+        </div>
     </div>
+    <div *ngIf="selectedLanguage==='PORTUGUESE'">
+        <div class="side-nav">
+            <mat-list class="list" role="list">
+                <mat-list-item role="listitem"><button mat-button class="sideButton"
+                        (click)="goTo('Ambiente')">Ambiente</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton"
+                    (click)="goTo('Curso')">Curso</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('Manutenção')">Manutenção</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('Matéria')">Matéria</button>
+                </mat-list-item>
+                <mat-list-item role="listitem"><button mat-button class="sideButton" (click)="goTo('Usuário')">Usuário</button>
+                </mat-list-item>
+    
+            </mat-list>
+        </div>
+    </div>
+    
     <div class="rigth-body">
-        <div *ngIf="navigate=='Course'">
+        <div *ngIf="navigate=='Course'||navigate=='Curso'">
             <app-adm-course></app-adm-course>
         </div>
-        <div *ngIf="navigate=='User'">
+        <div *ngIf="navigate=='User'||navigate=='Usuário'">
             <app-adm-users></app-adm-users>
         </div>
-        <div *ngIf="navigate=='Ambients'">
+        <div *ngIf="navigate=='Ambients'||navigate=='Ambiente'">
             <app-adm-ambients></app-adm-ambients>
         </div>
-        <div *ngIf="navigate=='Maintenance'">
+        <div *ngIf="navigate=='Maintenance'||navigate=='Manutenção'">
             <app-adm-maintenance></app-adm-maintenance>
         </div>
-        <div *ngIf="navigate=='Subject'">
+        <div *ngIf="navigate=='Subject'||navigate=='Matéria'">
             <app-adm-subject></app-adm-subject>
         </div>
     </div>

@@ -4,8 +4,8 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Course</mat-label>
-        <mat-select [(ngModel)]="courseName">
-          <mat-option  *ngFor="let cour of courseSelect" [value]="cour">
+        <mat-select [(ngModel)]="courseId">
+          <mat-option  *ngFor="let cour of courseSelect" [value]="cour.id">
             {{cour.name}}
           </mat-option>
         </mat-select>

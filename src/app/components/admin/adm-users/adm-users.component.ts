@@ -35,12 +35,13 @@ export class AdmUsersComponent implements OnInit {
   dataSource: any;
   searchambients: any;
   checkBoxArray= new Array;
+  loading!:boolean;
 
   constructor(private dialog: MatDialog, private user: UserService) { }
 
   ngOnInit(): void {
-    this.user.userAll().subscribe((data:any)=>{
-      console.log(data);
+    this.loading=false;
+    this.user.userAll().then((data:any)=>{
       this.dataSource = data;
     });
   }
@@ -54,7 +55,23 @@ export class AdmUsersComponent implements OnInit {
       },
     });
   }
-  deactivateUser(){}
+  deactivateUser(){
+    this.loading=true;
+    this.user.userAll().then((data)=>{
+      for (let ob of data) {
+        let y = 0;
+        for (y = 0; y < this.checkBoxArray.length; y++) {
+          if (this.checkBoxArray[y] === ob.id) {
+            ob.isActive = false;
+            let stringOb = JSON.stringify(ob);
+            let jsonOb = JSON.parse(stringOb);
+            console.log(jsonOb);
+           this.user.userUpdate(this.checkBoxArray[y], jsonOb).then((data) => { console.log('desativado') });
+          }
+        }
+      }
+    })
+  }
   onCheckChange(value: string) {
     if (this.checkBoxArray.length === 0) {
       this.checkBoxArray.push(value);

@@ -16,6 +16,7 @@ import {MatPaginator} from '@angular/material/paginator';
 
 export class AdmAmbientsComponent implements OnInit {
 
+  selectedLanguage!: any; 
   displayedColumns: string[] = ['id', 'name', 'type', 'reference', 'number', 'isActive', 'createdOn', 'updatedOn'];
   dataSource: any;
   searchAmbients: any;
@@ -79,10 +80,8 @@ export class AdmAmbientsComponent implements OnInit {
             this.ambient.ambientUpdate(this.checkBoxArray[y], jsonOb).then((data) => { console.log('desativado') }).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
           }
         }
-
       }
-    })
-    
+    });    
   }
   viewAmb(){
     this.dialog.open(AmbVModalComponent,{

@@ -2,9 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Schedule } from 'src/app/models/model';
 import { ScheduleService} from 'src/app/services/schedule.service';
-import { ShowScheduleModuleComponent } from'src/app/shared/show-schedule-module/show-schedule-module.component'
-
+import { ShowScheduleModuleComponent } from'src/app/shared/show-schedule-module/show-schedule-module.component';
+import { ShareSettingsComponent } from'src/app/shared/share-settings/share-settings.component';
+import { ComboBox } from 'src/app/shared/comboBox';
 import { MatDialog } from '@angular/material/dialog';
+
 interface Curso {
   value: string;
   viewValue: string;
@@ -27,13 +29,22 @@ interface Hora {
 })
 export class HomeComponent implements OnInit {
 
+  selectedLanguage!:any;
   users: any;
   tipoData:any;
   selectedCurso: any;
   dia: any;
   arrayDatas = new Array();
-  sem = 'Week';
-  men = 'Month';
+  viewEN: ComboBox[]=[
+    {value: 'WEEK', viewValue:'Week'},
+    {value: 'MONTH', viewValue:'Month'},
+  ];
+  viewPT: ComboBox[]=[
+    {value: 'WEEK', viewValue:'Semana'},
+    {value: 'MONTH', viewValue:'Mês'},
+  ];
+  sem = 'WEEK';
+  men = 'MONTH';
   cursos: Curso[] = [
     {value:'ads', viewValue:'Análise e Desenvolvimento de Sistemas'},
     {value:'dsm', viewValue:'Desenvolvimento de Software Multiplataforma'},
@@ -66,12 +77,13 @@ export class HomeComponent implements OnInit {
   constructor(  private router: Router, public scheduleService: ScheduleService,public dialog: MatDialog) {};
 
   ngOnInit(): void {
-    this.scheduleService.scheduleAll().then((data:any)=>{
+    /*this.scheduleService.scheduleAll().then((data:any)=>{
       for(let dat of data){
         this.arrayDatas.push(dat.startDate);
       }
       console.log(this.arrayDatas);
-    });
+    });*/
+    this.selectedLanguage=localStorage.getItem('lang');
   }
   ngOnDestroy(){}
 
@@ -92,5 +104,8 @@ export class HomeComponent implements OnInit {
         }
       }
     });
+  }
+  goSetting(){
+    this.dialog.open(ShareSettingsComponent);
   }
 }

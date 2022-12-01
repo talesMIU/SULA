@@ -1,29 +1,34 @@
 <h2 mat-dialog-title>Update Course</h2>
 <mat-dialog-content class="mat-typography">
-    <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Current Name</mat-label>
-            <input matInput type="text" disabled="disable">{{oldName.name}}
-        </mat-form-field>
+    <div *ngIf="!loading">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Current Name</mat-label>
+                <input matInput type="text" disabled="disable">{{oldName.name}}
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="courseName">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>New Status (Optional)</mat-label>
+                <mat-select [(ngModel)]="courseStat">
+                    <mat-option *ngFor="let stat of courseStatus" [value]="stat.value">
+                        {{stat.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
-    <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput [(ngModel)]="courseName">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field appearance="fill">
-            <mat-label>New Status (Optional)</mat-label>
-            <mat-select [(ngModel)]="courseStat">
-                <mat-option *ngFor="let stat of courseStatus" [value]="stat.value">
-                    {{stat.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
+    <div *ngIf="loading">
+        <mat-spinner></mat-spinner>
+    </div>    
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateCourse()">Confirm</button>
+    <button mat-button cdkFocusInitial (click)="updateCourse()">Confirm</button>
 </mat-dialog-actions>

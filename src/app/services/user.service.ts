@@ -16,13 +16,13 @@ export class UserService{
         const url = `${environment.SULA_API}${environment.userServ}/login`;
         return this.http.post<UserToken[]>(url,userLogin);
     }
-    public userUpdate (id:string, user: UserValid): Observable<UserValid[]> {
+    public userUpdate (id:string, user: UserValid): Promise<UserValid[]> {
         const url = `${environment.SULA_API}${environment.userServ}/update/${id}`;
-        return this.http.post<UserValid[]>(url, user);
+        return this.http.put<UserValid[]>(url,user).toPromise();
     }
-    public userCreate (user: JSON): Observable<UserValid[]> {
+    public userCreate (user: JSON): Promise<UserValid[]> {
         const url = `${environment.SULA_API}${environment.userServ}/create`;
-        return this.http.post<UserValid[]>(url,user);
+        return this.http.post<UserValid[]>(url,user).toPromise();
     }
     public userRefresh (): Observable<UserValid[]> {
         const url = `${environment.SULA_API}${environment.userServ}/refresh/token`;
@@ -36,8 +36,8 @@ export class UserService{
         const url = `${environment.SULA_API}${environment.userServ}/details/id/${id}`;
         return this.http.get<UserValid[]>(url);
     }
-    public userAll (): Observable<UserValid[]> {
+    public userAll (): Promise<UserValid[]> {
         const url = `${environment.SULA_API}${environment.userServ}/all`;
-        return this.http.get<UserValid[]>(url);
+        return this.http.get<UserValid[]>(url).toPromise();
     }
 }

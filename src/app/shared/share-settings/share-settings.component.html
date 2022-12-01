@@ -1,0 +1,33 @@
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+  <h2 mat-dialog-title>Settings</h2>
+  <mat-dialog-content class="mat-typography">
+      <div>
+          <div>
+            <mat-radio-group [(ngModel)]="selectedLanguage">
+              <mat-radio-button class="radio-btn" *ngFor="let language of languagesEN" [value]="language.value">{{language.viewValue}}</mat-radio-button>
+            </mat-radio-group>
+         </div>
+      </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="setLanguage()">Confirm</button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+  <h2 mat-dialog-title>Configurações</h2>
+  <mat-dialog-content class="mat-typography">
+      <div>
+          <div>
+            <mat-radio-group [(ngModel)]="selectedLanguage">
+              <mat-radio-button class="radio-btn" *ngFor="let language of languagesPT" [value]="language.value">{{language.viewValue}}</mat-radio-button>
+            </mat-radio-group>
+         </div>
+      </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="setLanguage()">Confirma</button>
+  </mat-dialog-actions>
+</div>

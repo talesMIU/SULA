@@ -3,7 +3,7 @@ import { CourseService } from 'src/app/services/course.controller.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CourCModalComponent } from './cour-c-modal/cour-c-modal.component';
 import { CourUModalComponent } from './cour-u-modal/cour-u-modal.component';
-
+import { SubShowAllModalComponent } from'./sub-show-all-modal/sub-show-all-modal.component';
 @Component({
   selector: 'app-adm-course',
   templateUrl: './adm-course.component.html',
@@ -14,10 +14,11 @@ export class AdmCourseComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'isActive', 'createdOn', 'updatedOn'];
   dataSource: any;
   checkBoxArray = new Array();
-
+  loading!:boolean;
   constructor(private course:CourseService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.loading=false;
     this.course.courseAll().then((data)=>{
       this.dataSource = data;
     });
@@ -50,5 +51,27 @@ export class AdmCourseComponent implements OnInit {
       }
     });
   }
-  deactivateCourse(){}
+  deactivateCourse(){
+    this.loading=true;
+    this.course.courseAll().then((data)=>{
+      for (let ob of data) {
+        let y = 0;
+        for (y = 0; y < this.checkBoxArray.length; y++) {
+          if (this.checkBoxArray[y] === ob.id) {
+            ob.isActive = false;
+            let stringOb = JSON.stringify(ob);
+            let jsonOb = JSON.parse(stringOb);
+            this.course.courseUpdate(this.checkBoxArray[y], jsonOb).then((data) => { console.log('desativado') }).finally(()=>{setTimeout(()=>{window.location.reload();}, 3000)});
+          }
+        }
+      }
+    }); 
+  }
+  viewSub(){
+    this.dialog.open(SubShowAllModalComponent, {
+      data:{
+        id: this.checkBoxArray[0],
+      }
+    });
+  }
 }

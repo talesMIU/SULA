@@ -59,6 +59,8 @@ import { DatePipe } from '@angular/common';
 import { ShareSuccessComponent } from './shared/share-success/share-success.component';
 import { ShareFailedComponent } from './shared/share-failed/share-failed.component';
 import { ShowScheduleModuleComponent } from './shared/show-schedule-module/show-schedule-module.component';
+import { SubShowAllModalComponent } from './components/admin/adm-course/sub-show-all-modal/sub-show-all-modal.component';
+import { ShareSettingsComponent } from './shared/share-settings/share-settings.component';
 
 
 
@@ -90,7 +92,9 @@ import { ShowScheduleModuleComponent } from './shared/show-schedule-module/show-
     MainUModalComponent,
     ShareSuccessComponent,
     ShareFailedComponent,
-    ShowScheduleModuleComponent
+    ShowScheduleModuleComponent,
+    SubShowAllModalComponent,
+    ShareSettingsComponent
   ],
   imports: [
     AppRoutingModule,    

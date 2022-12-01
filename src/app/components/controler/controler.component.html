@@ -23,23 +23,23 @@
         <mat-grid-tile class="tileSemana" [colspan]="2" [rowspan]="1">Sab</mat-grid-tile>
       </div>
       <div>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">20</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">21</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">22</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">23</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">24</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">25</mat-grid-tile>
-        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">26</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">27</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">28</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">29</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">30</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">1</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">2</mat-grid-tile>
+        <mat-grid-tile class="tile-noaula" [colspan]="2" [rowspan]="2">3</mat-grid-tile>
       </div>
       <mat-grid-tile class="tile" [colspan]="2" [rowspan]="2"></mat-grid-tile>
       <mat-grid-tile class="tile-lista-aula" [colspan]="2" [rowspan]="6">
-        <div *ngIf="!cancel">
+        <div>
           <button mat-raised-button class="botao" (click)="openModal()"  *ngFor="let horaseg of horasegs">{{horaseg.value}}</button>
         </div>
       </mat-grid-tile>
       <mat-grid-tile class="tile" [colspan]="2" [rowspan]="2"></mat-grid-tile>
       <mat-grid-tile class="tile-lista-aula" [colspan]="2" [rowspan]="6">
-        <div>
+        <div *ngIf="!cancel">
           <button mat-raised-button class="botao" (click)="openModal()" *ngFor="let horaqua of horaquas">{{horaqua.value}}</button>
         </div>
       </mat-grid-tile>
@@ -89,11 +89,11 @@
       <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">21</button></mat-grid-tile>
       <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">22</button></mat-grid-tile>
       <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">23</button></mat-grid-tile>
-      <mat-grid-tile class="tileDiaA" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">24</button></mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">25</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">24</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">25</button></mat-grid-tile>
 
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">26</button></mat-grid-tile>
-      <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">27</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaP" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">26</button></mat-grid-tile>
+      <mat-grid-tile class="tileDiaA" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">27</button></mat-grid-tile>
       <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('2022-11-28T07:00:00.000+00:00')">28</button></mat-grid-tile>
       <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">29</button></mat-grid-tile>
       <mat-grid-tile class="tileDia" [colspan]="2" [rowspan]="1"><button mat-raised-button class="btn-dia" (click)="openModalDia('')">30</button></mat-grid-tile>

@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
         if(mayLog){
             return true;
         }else{
-            return false;
+            return true;
         }        
     }
 }
