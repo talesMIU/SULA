@@ -72,7 +72,7 @@
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Nome Atual</mat-label>
-        <input matInput type="text" disabled="disable">{{oldName.name}}
+        <input matInput type="text" disabled="disable">Sala005
       </mat-form-field>
     </div>
     <div>
@@ -103,17 +103,17 @@
     </mat-form-field>
     <div>
          <mat-label>Características</mat-label></div><div>
-            <mat-checkbox class="checkBox" *ngFor="let characteristics of ambChar" (change)="onCheckChar(characteristics.value)">{{characteristics.viewValue}}</mat-checkbox>
+            <mat-checkbox class="checkBox" *ngFor="let characteristics of ambCharPT" (change)="onCheckChar(characteristics.value)">{{characteristics.viewValue}}</mat-checkbox>
     </div>
     <div>
         <mat-label>Disponibilidade</mat-label></div><div>
-        <mat-checkbox class="checkBox" *ngFor="let available of ambAval" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
+        <mat-checkbox class="checkBox" *ngFor="let available of ambAvalPT" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
     </div>
     <div>
       <mat-form-field appearance="fill">
         <mat-label>Novo Status (Optional)</mat-label>
         <mat-select [(ngModel)]="ambStat">
-          <mat-option  *ngFor="let stat of ambientStatus" [value]="stat.value">
+          <mat-option  *ngFor="let stat of ambientStatusPT" [value]="stat.value">
             {{stat.viewValue}}
           </mat-option>
         </mat-select>

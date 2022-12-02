@@ -5,6 +5,7 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { AmbientService } from 'src/app/services/ambient.service';
 import { Time } from 'src/app/shared/time';
 import { UserService } from 'src/app/services/user.service';
+import { ComboBox } from 'src/app/shared/comboBox';
 
 @Component({
   selector: 'app-new-age-mod',
@@ -45,11 +46,21 @@ export class NewAgeModComponent implements OnInit {
   endTimeSelect = new Array;
   userId: any;
   userObj:any;
-  ages: string[] = ['Once', 'Recurrent'];
+
+  ages:ComboBox[]=[
+    {value: 'Once', viewValue:'Once'},
+    {value: 'Recurrent', viewValue:'Recurrent'},
+  ];
+  agesPT:ComboBox[]=[
+    {value: 'Once', viewValue:'Único'},
+    {value: 'Recurrent', viewValue:'Recorrente'},
+  ];
+  selectedLanguage!:any;
 
   constructor(private course: CourseService, private subject: SubjectService, private schedule: ScheduleService, private ambient: AmbientService, private user: UserService) { }
 
   ngOnInit(): void {
+    this.selectedLanguage=localStorage.getItem('lang');
     this.loading=false;
     this.isSubDisabled = true;
     this.isEndDisabled = true;

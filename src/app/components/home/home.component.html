@@ -171,7 +171,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Selecione o Período</mat-label>
         <mat-select [(ngModel)]="selectedPeriodo" name="periodo">
-          <mat-option *ngFor="let periodo of periodos" [value]="periodo.value">
+          <mat-option *ngFor="let periodo of periodosPT" [value]="periodo.value">
             {{periodo.viewValue}}
           </mat-option>
         </mat-select>

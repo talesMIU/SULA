@@ -28,6 +28,22 @@ export class AmbCModalComponent implements OnInit {
     { value: 'DATACENTER', viewValue: 'Datacenter'},
   ];
 
+  ambAvalPT: ComboBox[]=[
+    {value: 'MORNING', viewValue:'Manhã'},
+    {value: 'EVENING', viewValue:'Tarde'},
+    {value: 'NOCTURNE', viewValue:'Noite'},
+  ];
+  ambTypePT: ComboBox[]=[
+    { value: 'LABORATORY', viewValue: 'Laboratório'},
+    { value: 'CLASSROOM', viewValue: 'Sala'},
+    { value: 'LIBRARY', viewValue: 'Biblioteca'},
+  ];
+  ambCharPT: ComboBox[]=[
+    { value: 'WIFI', viewValue: 'Wi-Fi'},
+    { value: 'PROJECTOR', viewValue: 'Projetor'},
+    { value: 'DATACENTER', viewValue: 'Datacenter'},
+  ];
+
   aType:any;
   aChar= new Array();
   aAval= new Array();

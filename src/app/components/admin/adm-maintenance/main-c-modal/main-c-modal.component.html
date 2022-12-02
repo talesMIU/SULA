@@ -41,7 +41,7 @@
     <div *ngIf="!loading">
       <div>
         <mat-form-field appearance="fill">
-          <mat-label>Selecione o Ambientez</mat-label>
+          <mat-label>Selecione o Ambiente</mat-label>
           <mat-select [(ngModel)]="selectedAmbient">
             <mat-option  *ngFor="let ambient of ambientArray" [value]="ambient">
               {{ambient.name}}
@@ -53,8 +53,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Escolha as datas</mat-label>
           <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Start date" [(ngModel)]="startDate" required>
-            <input matEndDate placeholder="End date" [(ngModel)]="endDate" required>
+            <input matStartDate placeholder="Data de Início" [(ngModel)]="startDate" required>
+            <input matEndDate placeholder="Data de Fim" [(ngModel)]="endDate" required>
           </mat-date-range-input>
           <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

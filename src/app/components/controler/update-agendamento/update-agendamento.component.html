@@ -1,69 +1,143 @@
-<h2 mat-dialog-title>Update Schedule</h2>
-<mat-dialog-content class="mat-typography">
-  <div class="radio-button">
-    <mat-radio-group [(ngModel)]="update">
-      <mat-radio-button class='radio-button' *ngFor="let up of ups" [value]="up">{{up}}</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div *ngIf="update == atu">
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Choose Course</mat-label>
-        <mat-select [(ngModel)]="courseName" (selectionChange)="onSelectCourse($event)">
-          <mat-option *ngFor="let cour of courseSelect" [value]="cour" >{{cour.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Choose Subject</mat-label>
-        <mat-select [(ngModel)]="subjectName" [disabled]="isSubDisabled">
-          <mat-option *ngFor="let sub of subjectSelect" [value]="sub" >{{sub.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Choose Ambient</mat-label>
-        <mat-select [(ngModel)]="ambientName">
-          <mat-option *ngFor="let amb of ambientSelect" [value]="amb">{{amb.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>  
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>What time does it start?</mat-label>
-        <mat-select [(ngModel)]="startTime" (selectionChange)="onSelectTime($event)">
-          <mat-option *ngFor="let tim of timeSelect" [value]="tim">{{tim.viewValue}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>What time does it end?</mat-label>
-        <mat-select [(ngModel)]="endTime" [disabled]="isEndDisabled">
-          <mat-option *ngFor="let endTim of endTimeSelect" [value]="endTim" >{{endTim.viewValue}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+<div *ngIf="selectedLanguage!=='PORTUGUESE'">
+  <h2 mat-dialog-title>Update Schedule</h2>
+  <mat-dialog-content class="mat-typography">
     <div class="radio-button">
-      <mat-radio-group [(ngModel)]="tipoAgendamento">
-        <mat-radio-button class="radio-button" *ngFor="let age of ages" [value]="age">{{age}}</mat-radio-button>
+      <mat-radio-group [(ngModel)]="update">
+        <mat-radio-button class='radio-button' *ngFor="let up of ups" [value]="up.value">{{up.viewValue}}</mat-radio-button>
       </mat-radio-group>
     </div>
-  </div>
-  <div *ngIf="update == can">
-    <mat-form-field appearance="fill">
-      <mat-label>Reason (Optional)</mat-label>
-      <mat-select>
-        <mat-option value="option1">Holyday</mat-option>
-        <mat-option value="option2">Health</mat-option>
-        <mat-option value="option3">Others</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Confirm</button>
-</mat-dialog-actions>
+    <div *ngIf="update == atu">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose Course</mat-label>
+          <mat-select [(ngModel)]="courseName" (selectionChange)="onSelectCourse($event)">
+            <mat-option *ngFor="let cour of courseSelect" [value]="cour" >{{cour.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose Subject</mat-label>
+          <mat-select [(ngModel)]="subjectName" [disabled]="isSubDisabled">
+            <mat-option *ngFor="let sub of subjectSelect" [value]="sub" >{{sub.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose Ambient</mat-label>
+          <mat-select [(ngModel)]="ambientName">
+            <mat-option *ngFor="let amb of ambientSelect" [value]="amb">{{amb.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>  
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>What time does it start?</mat-label>
+          <mat-select [(ngModel)]="startTime" (selectionChange)="onSelectTime($event)">
+            <mat-option *ngFor="let tim of timeSelect" [value]="tim">{{tim.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>What time does it end?</mat-label>
+          <mat-select [(ngModel)]="endTime" [disabled]="isEndDisabled">
+            <mat-option *ngFor="let endTim of endTimeSelect" [value]="endTim" >{{endTim.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="radio-button">
+        <mat-radio-group [(ngModel)]="tipoAgendamento">
+          <mat-radio-button class="radio-button" *ngFor="let age of ages" [value]="age">{{age}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div *ngIf="update == can">
+      <mat-form-field appearance="fill">
+        <mat-label>Reason (Optional)</mat-label>
+        <mat-select>
+          <mat-option value="option1">Holyday</mat-option>
+          <mat-option value="option2">Health</mat-option>
+          <mat-option value="option3">Others</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Confirm</button>
+  </mat-dialog-actions>
+</div>
+
+<div *ngIf="selectedLanguage==='PORTUGUESE'">
+  <h2 mat-dialog-title>Atualizar Apontamento  </h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="radio-button">
+      <mat-radio-group [(ngModel)]="update">
+        <mat-radio-button class='radio-button' *ngFor="let up of upsPT" [value]="up.value">{{up.viewValue}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div *ngIf="update == atu">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Escolha um Curso</mat-label>
+          <mat-select [(ngModel)]="courseName" (selectionChange)="onSelectCourse($event)">
+            <mat-option *ngFor="let cour of courseSelect" [value]="cour" >{{cour.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Escolha uma Matéria</mat-label>
+          <mat-select [(ngModel)]="subjectName" [disabled]="isSubDisabled">
+            <mat-option *ngFor="let sub of subjectSelect" [value]="sub" >{{sub.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Escolha o Ambiente</mat-label>
+          <mat-select [(ngModel)]="ambientName">
+            <mat-option *ngFor="let amb of ambientSelect" [value]="amb">{{amb.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>  
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Que horas começa?</mat-label>
+          <mat-select [(ngModel)]="startTime" (selectionChange)="onSelectTime($event)">
+            <mat-option *ngFor="let tim of timeSelect" [value]="tim">{{tim.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Que horas termina?</mat-label>
+          <mat-select [(ngModel)]="endTime" [disabled]="isEndDisabled">
+            <mat-option *ngFor="let endTim of endTimeSelect" [value]="endTim" >{{endTim.viewValue}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="radio-button">
+        <mat-radio-group [(ngModel)]="tipoAgendamento">
+          <mat-radio-button class="radio-button" *ngFor="let age of agesPT" [value]="age.value">{{age.viewValue}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div *ngIf="update == can">
+      <mat-form-field appearance="fill">
+        <mat-label>Motivo (Opcional)</mat-label>
+        <mat-select>
+          <mat-option value="option1">Feriado</mat-option>
+          <mat-option value="option2">Saúde</mat-option>
+          <mat-option value="option3">Outro</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancela</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Confirma</button>
+  </mat-dialog-actions>
+</div>

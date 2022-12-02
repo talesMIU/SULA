@@ -7,6 +7,7 @@ import { LoginStorageService } from '../../services/storage/login-storage-servic
 import { UserService } from 'src/app/services/user.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { ShowScheduleModuleComponent } from'src/app/shared/show-schedule-module/show-schedule-module.component';
+import { ComboBox } from 'src/app/shared/comboBox';
 
 interface Curso {
   value: string;
@@ -34,8 +35,8 @@ export class ControlerComponent implements OnInit {
   loading!:boolean
   tipoData: any;
   selectedCurso: any;
-  sem = 'Week';
-  men = 'Month';
+  sem = 'WEEK';
+  men = 'MONTH';
   userName!: any;
   userId!: any;
   userObj: any;
@@ -76,13 +77,22 @@ export class ControlerComponent implements OnInit {
     { value: '10:00 SALA_06-IA' }, { value: '10:30 SALA_06-IA' },
     { value: '11:00 SALA_06-IA' }, { value: '11:30 SALA_06-IA' }
   ]
+  viewEN: ComboBox[]=[
+    {value: 'WEEK', viewValue:'Week'},
+    {value: 'MONTH', viewValue:'Month'},
+  ];
+  viewPT: ComboBox[]=[
+    {value: 'WEEK', viewValue:'Semana'},
+    {value: 'MONTH', viewValue:'Mês'},
+  ];
 
-
-  dates: string[] = ['Week', 'Month'];
+  dates: string[] = ['WEEK', 'MONTH'];
+  selectedLanguage!:any;
   constructor(private router: Router, public dialog: MatDialog, private login: LoginStorageService, private user: UserService, private schedule: ScheduleService) { }
 
   ngOnInit(): void {
     this.loading=false;
+    this.selectedLanguage=localStorage.getItem('lang');
     //let log = this.login.getUserRole();
     //if (log !== 'ROLE_USER') {
      // this.router.navigate(['']);

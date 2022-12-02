@@ -5,6 +5,7 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { AmbientService } from 'src/app/services/ambient.service';
 import { Time } from 'src/app/shared/time';
 import { UserService } from 'src/app/services/user.service';
+import { ComboBox } from 'src/app/shared/comboBox';
 @Component({
   selector: 'app-update-agendamento',
   templateUrl: './update-agendamento.component.html',
@@ -13,7 +14,14 @@ import { UserService } from 'src/app/services/user.service';
 export class UpdateAgendamentoComponent implements OnInit {
 
   update: any;
-  ups: string[] = ['Update', 'Cancel Schedule'];
+  ups: ComboBox[]=[
+    {value: 'Update', viewValue:'Update'},
+    {value: 'Cancel Schedule', viewValue:'Cancel Schedule'},
+  ];
+  upsPT: ComboBox[]=[
+    {value: 'Update', viewValue:'Atualizar'},
+    {value: 'Cancel Schedule', viewValue:'Cancelar Apontamento'},
+  ];
   atu = 'Update';
   can = 'Cancel Schedule';
   tipoAgendamento: any;
@@ -47,11 +55,17 @@ export class UpdateAgendamentoComponent implements OnInit {
   endTimeSelect = new Array;
   userId: any;
   userObj:any;
+  agesPT:ComboBox[]=[
+    {value: 'Once', viewValue:'Único'},
+    {value: 'Recurrent', viewValue:'Recorrente'},
+  ];
   ages: string[] = ['Once', 'Recurrent'];
+  selectedLanguage!:any;
 
   constructor(private course: CourseService, private subject: SubjectService, private schedule: ScheduleService, private ambient: AmbientService, private user: UserService) { }
 
   ngOnInit(): void {
+    this.selectedLanguage=localStorage.getItem('lang');
     this.isSubDisabled = true;
     this.isEndDisabled = true;
     this.userId = sessionStorage.getItem('uId');

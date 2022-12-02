@@ -22,6 +22,7 @@ export class MainCModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading=false;
+    this.selectedLanguage = localStorage.getItem('lang');
     this.ambientService.ambientAll().then((data:any)=>{
       this.ambientArray=data;
     })

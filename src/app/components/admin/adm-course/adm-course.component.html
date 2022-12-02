@@ -22,7 +22,7 @@
                 </mat-form-field>
                 <button *ngIf="checkBoxArray.length===0" mat-raised-button class="btn-primario" (click)="createCourse()">Criar</button>
                 <button *ngIf="checkBoxArray.length===1" mat-raised-button class="btn-primario"  (click)="updateCourse()">Atualizar</button>    
-                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-secundario"  (click)="viewSub()">Ver Informação</button>
+                <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-secundario"  (click)="viewSub()">Ver Matérias</button>
                 <button *ngIf="checkBoxArray.length>0" mat-raised-button class="btn-terciario"  (click)="deactivateCourse()">Desativar</button>
             </form>
         </div>

@@ -60,7 +60,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Tipo</mat-label>
           <mat-select [(ngModel)]="aType">
-            <mat-option  *ngFor="let type of ambType" [value]="type.value">
+            <mat-option  *ngFor="let type of ambTypePT" [value]="type.value">
               {{type.viewValue}}
             </mat-option>
           </mat-select>
@@ -78,11 +78,11 @@
       </mat-form-field>
       <div>
            <mat-label>Características</mat-label></div><div>
-              <mat-checkbox class="checkBox" *ngFor="let characteristics of ambChar" (change)="onCheckChar(characteristics.value)">{{characteristics.viewValue}}</mat-checkbox>
+              <mat-checkbox class="checkBox" *ngFor="let characteristics of ambCharPT" (change)="onCheckChar(characteristics.value)">{{characteristics.viewValue}}</mat-checkbox>
       </div>
       <div>
           <mat-label>Disponibilidade</mat-label></div><div>
-          <mat-checkbox class="checkBox" *ngFor="let available of ambAval" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
+          <mat-checkbox class="checkBox" *ngFor="let available of ambAvalPT" (change)="onCheckAval(available.value)">{{available.viewValue}}</mat-checkbox>
       </div>
     </div>
     <div *ngIf="loading">

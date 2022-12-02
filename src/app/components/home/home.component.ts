@@ -66,6 +66,11 @@ export class HomeComponent implements OnInit {
     {value:'ves', viewValue:'Evening'},
     {value:'not', viewValue:'Night'}
   ];
+  periodosPT: Periodo[] = [
+    {value:'mat', viewValue:'Manhã'},
+    {value:'ves', viewValue:'Tarde'},
+    {value:'not', viewValue:'Noite'}
+  ];
   day = new Date();
   horas: Hora[] = [
     {value:'07:00: Lab_5-MicroSistemas'},{value:'07:30: Lab_5-MicroSistemas'},{value:'08:00: Lab_5-MicroSistemas'},{value:'08:30: Lab_5-MicroSistemas'},{value:'09:00: ambients_1-Gestão_Empresarial'},{value:'09:30 ambients_1-Gestão_Empresarial'},{value:'10:00 ambients_1-Gestão_Empresarial'},{value:'10:30 ambients_1-Gestão_Empresarial'},{value:'11:00 ambients_1-Gestão_Empresarial'},{value:'11:30 ambients_1-Gestão_Empresarial'},    

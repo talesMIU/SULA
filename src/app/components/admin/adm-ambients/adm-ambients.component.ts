@@ -8,6 +8,8 @@ import { AmbVModalComponent } from './amb-v-modal/amb-v-modal.component';
 import { AmbUModalComponent } from './amb-u-modal/amb-u-modal.component';
 import {MatPaginator} from '@angular/material/paginator';
 
+import { ShareFailedComponent } from 'src/app/shared/share-failed/share-failed.component';
+
 @Component({
   selector: 'app-adm-ambients',
   templateUrl: './adm-ambients.component.html',
@@ -40,7 +42,7 @@ export class AdmAmbientsComponent implements OnInit {
   }
 
   createAmb(): void {
-    this.dialog.open(AmbCModalComponent);
+    this.dialog.open(ShareFailedComponent);
   }
 
   onCheckChange(value: string){

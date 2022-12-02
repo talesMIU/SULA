@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-share-failed',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ShareFailedComponent implements OnInit {
 
   selectedLanguage!: any;
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.selectedLanguage = localStorage.getItem('lang');
